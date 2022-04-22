@@ -40,8 +40,8 @@ User.hasMany(Shop, { foreignKey: 'userId'});
 Shop.belongsTo(User)
 Shop.belongsToMany(Product, { through: "shop_product" })
 Product.belongsToMany(Shop, { through: "shop_product" })
-Categories.hasMany(Product, { foreignKey: 'categoryId'})
-Product.belongsTo(Categories)
+
+
 
 
 module.exports = {
