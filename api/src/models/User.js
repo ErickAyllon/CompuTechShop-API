@@ -30,14 +30,15 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-    birth: {
+    age: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     address: {
       type: DataTypes.STRING,
     },
     image: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
     },
     phone: {
       type: DataTypes.STRING,

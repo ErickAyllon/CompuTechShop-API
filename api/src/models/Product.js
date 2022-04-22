@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     image: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
     },
     price: {
       type: DataTypes.STRING,
@@ -23,9 +23,12 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    especifications: {
+    description: {
       type: DataTypes.TEXT,
     },
+    calification: {
+      type: DataTypes.STRING,
+    }
   },
   {
     timestamps: false /* le saca el createAt y Updateat*/,

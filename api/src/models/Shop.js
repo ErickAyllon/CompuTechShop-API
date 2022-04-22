@@ -20,6 +20,9 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    payment: {
+      type: DataTypes.STRING,
+    }
     // paid: {
     //   type: DataTypes.BOOLEAN,
     //   allowNull: false,
