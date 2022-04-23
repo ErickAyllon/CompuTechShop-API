@@ -1,16 +1,16 @@
 const router = require("express").Router();
-const {Product } = require("../db")
+const { User } = require("../../db")
 
 
 router.delete('/:id', async (req,res) => {
   const {id} = req.params
 	try {
     if(id){
-      await Product.destroy({
+      await User.destroy({
         where: {id}
       })
     }
-    return res.send({ msg: "Pokemon deleted" });
+    return res.send({ msg: "User deleted" });
 	}
 	catch(err){
 		console.log(err)

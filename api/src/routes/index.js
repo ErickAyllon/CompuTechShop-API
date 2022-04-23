@@ -1,9 +1,12 @@
 const router = require('express').Router();
-const { allCategories } = require('../Controllers/AllCategories');
-const postProduct = require("./postProduct.js");
-const updateProduct = require('./updateProduct.js');
-const deleteProduct = require('./deleteProduct');
-const getProduct = require('./getProduct');
+const postProduct = require("./Products/postProduct");
+const updateProduct = require('./Products/updateProduct.js');
+const deleteProduct = require('./Products/deleteProduct');
+const getProduct = require('./Products/getProduct');
+const postUser = require('./Users/postUser.js');
+const deleteUser = require('./Users/deleteUser.js');
+const updateUser = require('./Users/updateUser.js');
+const getUsers = require('./Users/getUsers.js');
 // const Categories = require("./Categories.js");
 
 
@@ -14,9 +17,13 @@ const getProduct = require('./getProduct');
 
 
 router.use("/postProduct", postProduct);
-router.use('/update', updateProduct);
-router.use('/delete', deleteProduct);
-router.use('/products', getProduct)
+router.use('/updateProduct', updateProduct);
+router.use('/deleteProduc', deleteProduct);
+router.use('/products', getProduct);
+router.use('/postUser', postUser);
+router.use('/deleteUser', deleteUser);
+router.use('/updateUser', updateUser);
+router.use('/users', getUsers);
 // router.use('/categories', Categories)
 
 
