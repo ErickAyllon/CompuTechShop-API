@@ -2,7 +2,7 @@ const router = require("express").Router();
 const {Product } = require("../../db")
 
 
-router.post("/", async (req, res) =>{
+router.post("/", async (req, res, next) =>{
 
 	const {
 		name, 
@@ -14,7 +14,7 @@ router.post("/", async (req, res) =>{
 		calification,
 		category
 	} = req.body
-		console.log("ESTE ES EL DEL BODY",category)
+		
 	try {
 		let newProduct = await Product.create({
 			name, 
@@ -34,7 +34,7 @@ router.post("/", async (req, res) =>{
 		res.send("PRODUCTO AGREGADO")
 
 	} catch (error) {
-		console.log(error, "rutaPost")
+		res.send(error);
 	}	
 })
 
