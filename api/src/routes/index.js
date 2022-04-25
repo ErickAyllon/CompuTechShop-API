@@ -9,13 +9,7 @@ const updateUser = require("./Users/updateUser.js");
 const getUsers = require("./Users/getUsers.js");
 // const Categories = require("./Categories.js");
 const { validatorProduct } = require("../Validators/ValidatorProduct");
-
-
-
-
-
-
-
+const productQuery = require("../Filters/getProductQuery.js");
 
 router.use("/products", getProduct);
 router.use("/postProduct", validatorProduct, postProduct);
@@ -26,9 +20,6 @@ router.use("/postUser", postUser);
 router.use("/updateUser", updateUser);
 router.use("/deleteUser", deleteUser);
 // router.use('/categories', Categories)
-
-
+router.use("/productQuery", productQuery);
 
 module.exports = router;
-
-

@@ -1,8 +1,7 @@
-const {Product } = require("../db");
-
+const { Product } = require("../db");
 
 const products = async () => {
-  const arrDB = await Product.findAll()
+  const arrDB = await Product.findAll();
   const result = await arrDB.map((p) => {
     return {
       id: p.id,
@@ -13,22 +12,22 @@ const products = async () => {
       category: p.category,
       brand: p.brand,
       description: p.description,
-      calification: p.calification
-    }
-  })
-  return result
-}
+      calification: p.calification,
+    };
+  });
+  return result;
+};
 
 const productName = async (name) => {
   try {
-    console.log(name)
+    console.log(name);
     const nameDB = await Product.findAll({
       where: {
         name: name,
       },
-    })
+    });
     // console.log(nameDB)
-    console.log(nameDB[0].dataValues.id)
+    console.log(nameDB[0].dataValues.id);
     const product = await nameDB.map((p) => {
       // console.log(p.product.dataValues.id)
       return {
@@ -40,15 +39,14 @@ const productName = async (name) => {
         category: p.dataValues.category,
         brand: p.dataValues.brand,
         description: p.dataValues.description,
-        calification: p.dataValues.calification
-      }
-    })
-    console.log(product[0])
-    return product[0]
+        calification: p.dataValues.calification,
+      };
+    });
+    console.log(product[0]);
+    return product[0];
+  } catch (error) {
+    console.log(error);
   }
-  catch(error){
-    console.log(error)
-  }
-}
+};
 
 module.exports = { products, productName };
