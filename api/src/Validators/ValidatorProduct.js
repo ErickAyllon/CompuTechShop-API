@@ -1,5 +1,5 @@
 const { check } = require("express-validator");
-const { validateResult } = require("../helpers/helperValidatorProduct");
+const { validateResult } = require("../helpers/helperValidator");
 
 (req) => {
   console.log(req);
