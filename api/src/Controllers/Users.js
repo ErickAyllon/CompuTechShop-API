@@ -49,4 +49,24 @@ const userName = async (name) => {
   }
 }
 
-module.exports = { users, userName };
+const userId = async (id) => {
+  try {
+    const dbUser = await User.findByPk(id)
+    return {
+      id: dbUser.id,
+      name: dbUser.name, 
+      lastName: dbUser.lastName,
+      nickname: dbUser.nickname,
+      email: dbUser.email,
+      email_verified: dbUser.email_verified,
+      age: dbUser.age,
+      address: dbUser.address,
+      image: dbUser.image,
+      phone: dbUser.phone
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+module.exports = { users, userName, userId };

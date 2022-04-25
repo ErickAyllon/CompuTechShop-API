@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { allCategories }  = require('../Controllers/AllCategories')
+const { allCategories }  = require('../../Controllers/AllCategories')
 
 
 router.get("/", async (req,res) =>{

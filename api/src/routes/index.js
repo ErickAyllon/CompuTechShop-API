@@ -7,7 +7,9 @@ const postUser = require("./Users/postUser.js");
 const deleteUser = require("./Users/deleteUser.js");
 const updateUser = require("./Users/updateUser.js");
 const getUsers = require("./Users/getUsers.js");
-const Categories = require("./Categories.js");
+const getUserById = require('./Users/getUserById')
+const Categories = require("./Categories/Categories");
+const postShop = require('./Shops/postShop');
 const { validatorProduct } = require("../Validators/ValidatorProduct");
 
 
@@ -21,11 +23,12 @@ router.use("/products", getProduct);
 router.use("/postProduct", validatorProduct, postProduct);
 router.use("/updateProduct", updateProduct);
 router.use("/deleteProduct", deleteProduct);
-router.use("/users", getUsers);
+router.use("/users", getUsers, getUserById);
 router.use("/postUser", postUser);
 router.use("/updateUser", updateUser);
 router.use("/deleteUser", deleteUser);
-router.use('/categories', Categories)
+router.use('/categories', Categories);
+router.use('/postShop', postShop);
 
 
 
