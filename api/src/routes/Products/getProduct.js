@@ -1,6 +1,11 @@
 const router = require("express").Router();
+<<<<<<< Updated upstream:api/src/routes/Products/getProduct.js
 const {Product } = require("../../db");
 const { products, productName }  = require('../../Controllers/Products');
+=======
+const {Product } = require("../../db")
+const { products, productName }  = require('../../Controllers/Products')
+>>>>>>> Stashed changes:api/src/routes/getProduct.js
 
 
 

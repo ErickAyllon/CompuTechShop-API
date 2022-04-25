@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 const router = require("express").Router();
 const postProduct = require("./Products/postProduct");
 const updateProduct = require("./Products/updateProduct.js");
@@ -7,6 +8,14 @@ const postUser = require("./Users/postUser.js");
 const deleteUser = require("./Users/deleteUser.js");
 const updateUser = require("./Users/updateUser.js");
 const getUsers = require("./Users/getUsers.js");
+=======
+const router = require('express').Router();
+const { allCategories } = require('../Controllers/AllCategories');
+const postProduct = require("./Products/postProduct.js");
+const updateProduct = require('./Products/updateProduct.js');
+const deleteProduct = require('./Products/deleteProduct');
+const getProduct = require('./Products/getProduct');
+>>>>>>> Stashed changes
 // const Categories = require("./Categories.js");
 const { validatorProduct } = require("../Validators/ValidatorProduct");
 const { validatorUser } = require("../Validators/ValidatorUser");

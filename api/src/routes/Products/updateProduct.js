@@ -1,5 +1,9 @@
 const router = require("express").Router();
+<<<<<<< Updated upstream:api/src/routes/Products/updateProduct.js
 const {Product } = require("../../db");
+=======
+const {Product } = require("../../db")
+>>>>>>> Stashed changes:api/src/routes/updateProduct.js
 
 
 router.put('/:id', async (req,res) => {
