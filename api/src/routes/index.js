@@ -9,7 +9,10 @@ const updateUser = require("./Users/updateUser.js");
 const getUsers = require("./Users/getUsers.js");
 // const Categories = require("./Categories.js");
 const { validatorProduct } = require("../Validators/ValidatorProduct");
-const productQuery = require("../Filters/getProductQuery.js");
+const productQuery = require("../Filters/getProductBrand.js");
+const productPriceMin = require("../Filters/getProductPriceMin.js");
+const productPriceMax = require("../Filters/getProductPriceMax.js");
+const productCategory = require("../Filters/getProductCategory.js");
 
 router.use("/products", getProduct);
 router.use("/postProduct", validatorProduct, postProduct);
@@ -20,6 +23,9 @@ router.use("/postUser", postUser);
 router.use("/updateUser", updateUser);
 router.use("/deleteUser", deleteUser);
 // router.use('/categories', Categories)
-router.use("/productQuery", productQuery);
+router.use("/productBrand", productQuery);
+router.use("/productPriceMin", productPriceMin);
+router.use("/productPriceMax", productPriceMax);
+router.use("/productCategory", productCategory);
 
 module.exports = router;

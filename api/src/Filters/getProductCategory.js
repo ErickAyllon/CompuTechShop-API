@@ -4,11 +4,11 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   try {
-    const { name } = req.query;
+    const { category } = req.query;
     const info = await products();
-    if (name) {
+    if (category) {
       let productInfo = await info.filter((el) =>
-        el.name.toLowerCase().includes(name.toLowerCase())
+        el.category.toLowerCase().includes(category.toLowerCase())
       );
       if (productInfo.length !== 0) {
         res.status(200).send(productInfo);
