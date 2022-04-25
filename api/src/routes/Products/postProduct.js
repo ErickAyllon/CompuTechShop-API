@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {Product } = require("../../db")
+const {Product, Category } = require("../../db")
 
 
 router.post("/", async (req, res, next) =>{
@@ -12,7 +12,7 @@ router.post("/", async (req, res, next) =>{
 		brand,
 		description,
 		calification,
-		category
+		categories
 	} = req.body
 		
 	try {
@@ -24,13 +24,12 @@ router.post("/", async (req, res, next) =>{
 			brand,
 			description,
 			calification,
-			category
 		});
-		// let newProductCategory = await Categories.findAll({
-		// 		where: {name: category}
-		// })
-		// console.log("ESTE ES EL DE LA BASE DE DATOS", newProductCategory[0].dataValues.name)
-		// newProduct.addCategories(newProductCategory);
+		let newProductCategory = await Category.findAll({
+				where: {name: categories}
+		})
+	
+		newProduct.addCategory(newProductCategory);
 		res.send("PRODUCTO AGREGADO")
 
 	} catch (error) {
