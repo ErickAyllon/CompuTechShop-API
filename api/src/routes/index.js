@@ -14,14 +14,14 @@ const getUserById = require("./Users/getUserById");
 const Categories = require("./Categories/Categories");
 // end categories / start filtros
 const getProductBrand = require("../Filters/getProductBrand");
-const productPriceMin = require("../Filters/getProductPriceMin.js");
-const productPriceMax = require("../Filters/getProductPriceMax.js");
 const productCategory = require("../Filters/getProductCategory.js");
 // end filtros / start validaciones
 const { validatorProduct } = require("../Validators/ValidatorProduct");
 const {validatorUser} = require("../Validators/ValidatorUser")
-// end validaciones / start ...
+// end validaciones / start shops
 const postShop = require("./Shops/postShop");
+// end shops / start carrusel
+const postCarrusel = require('./Carrusel/postCarrusel')
 
 
 // start products
@@ -38,10 +38,12 @@ router.use("/deleteUser", deleteUser);
 router.use("/categories", Categories);
 // end categories / start filtros
 router.use("/productBrand", getProductBrand);
-router.use("/productPriceMin", productPriceMin);
-router.use("/productPriceMax", productPriceMax);
 router.use("/productCategory", productCategory);
-// end filtros / start ...
+// end filtros / start shop
 router.use("/postShop", postShop);
+// end shops / start carrusel
+router.use('/postImgCarrusel', postCarrusel)
+
+
 
 module.exports = router;

@@ -1,4 +1,5 @@
-const { Product } = require("../db");
+const { Product, Category } = require("../db");
+const { Op } = require("sequelize");
 
 const products = async () => {
   const arrDB = await Product.findAll();
@@ -23,11 +24,18 @@ const productName = async (name) => {
     console.log(name);
     const nameDB = await Product.findAll({
       where: {
-        name: name,
+        name: {[Op.iLike]: `%${name}%`},
       },
+      include: {
+        model: Category,
+        attributes: ['name'],
+        through: {
+          attributes: [],
+        },
+      }
     });
     // console.log(nameDB)
-    console.log(nameDB[0].dataValues.id);
+    // console.log(nameDB[0].dataValues.id);
     const product = await nameDB.map((p) => {
       // console.log(p.product.dataValues.id)
       return {
@@ -36,14 +44,14 @@ const productName = async (name) => {
         image: p.dataValues.image,
         price: p.dataValues.price,
         quantity: p.dataValues.quantity,
-        category: p.dataValues.category,
+        category: p.categories.map((e) => e.name),
         brand: p.dataValues.brand,
         description: p.dataValues.description,
         calification: p.dataValues.calification,
       };
     });
-    console.log(product[0]);
-    return product[0];
+    // console.log(product[0]);
+    return product;
   } catch (error) {
     console.log(error);
   }

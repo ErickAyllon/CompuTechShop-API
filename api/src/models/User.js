@@ -32,7 +32,6 @@ module.exports = (sequelize) => {
     },
     age: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     address: {
       type: DataTypes.STRING,
@@ -42,7 +41,13 @@ module.exports = (sequelize) => {
     },
     phone: {
       type: DataTypes.STRING,
-    }
+    },
+    is_admin: {
+      type: DataTypes.BOOLEAN,
+    },
+    is_admin_pro: {
+      type: DataTypes.BOOLEAN,
+    },
   },
   {
     timestamps: false /* le saca el createAt y Updateat*/,
