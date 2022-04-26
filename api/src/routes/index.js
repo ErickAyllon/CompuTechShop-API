@@ -20,6 +20,8 @@ const { validatorProduct } = require("../Validators/ValidatorProduct");
 const {validatorUser} = require("../Validators/ValidatorUser")
 // end validaciones / start shops
 const postShop = require("./Shops/postShop");
+const getShops = require('./Shops/getShops');
+const getShopByUserId = require('./Shops/getShopByUserId')
 // end shops / start carrusel
 const postCarrusel = require('./Carrusel/postCarrusel')
 
@@ -41,6 +43,7 @@ router.use("/productBrand", getProductBrand);
 router.use("/productCategory", productCategory);
 // end filtros / start shop
 router.use("/postShop", postShop);
+router.use('/getShops', getShops, getShopByUserId);
 // end shops / start carrusel
 router.use('/postImgCarrusel', postCarrusel)
 
