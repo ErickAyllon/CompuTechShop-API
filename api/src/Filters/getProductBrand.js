@@ -1,22 +1,39 @@
 const { Router } = require("express");
 const { products } = require("../Controllers/Products");
 const router = Router();
+const { Product, Category } = require("../db");
 
 router.get("/", async (req, res) => {
   try {
     const { brand } = req.query;
-    const info = await products();
-    if (brand) {
-      let productInfo = await info.filter((el) =>
-        el.brand.toLowerCase().includes(brand.toLowerCase())
-      );
-      if (productInfo.length !== 0) {
-        res.status(200).send(productInfo);
-      } else {
-        res.status(404).send("That product doesn't exist");
+    const products = await Product.findAll({
+      where: {
+        brand: brand
+      },
+      include: {
+        model: Category,
+        attributes: ['name'],
+        through: {
+          attributes: [],
+        },
       }
-    } else {
-      res.status(200).send(info);
+    })
+    if(!products.length) return res.send({msg: 'No se encontro un producto con esa marca'})
+    else{
+      const resultado = products.map((p) =>{
+        return {
+          id: p.id,
+          name: p.name,
+          image: p.image,
+          price: p.price,
+          quantity: p.quantity,
+          category: p.categories.map((e) => e.name),
+          brand: p.brand,
+          description: p.description,
+          calification: p.calification,
+        }
+      })
+      res.send(resultado)
     }
   } catch (error) {
     console.log(error);

@@ -13,7 +13,7 @@ const getUserById = require("./Users/getUserById");
 // end users / start categories
 const Categories = require("./Categories/Categories");
 // end categories / start filtros
-const productQuery = require("../Filters/getProductBrand.js");
+const getProductBrand = require("../Filters/getProductBrand");
 const productPriceMin = require("../Filters/getProductPriceMin.js");
 const productPriceMax = require("../Filters/getProductPriceMax.js");
 const productCategory = require("../Filters/getProductCategory.js");
@@ -37,7 +37,7 @@ router.use("/deleteUser", deleteUser);
 // end users / start categories
 router.use("/categories", Categories);
 // end categories / start filtros
-router.use("/productBrand", productQuery);
+router.use("/productBrand", getProductBrand);
 router.use("/productPriceMin", productPriceMin);
 router.use("/productPriceMax", productPriceMax);
 router.use("/productCategory", productCategory);
