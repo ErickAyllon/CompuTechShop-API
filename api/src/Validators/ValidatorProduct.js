@@ -1,5 +1,5 @@
-const { check } = require("express-validator");
-const { validateResult } = require("../helpers/helperValidatorProduct");
+ const { check } = require("express-validator");
+const { validateResult } = require("../helpers/helperValidator");
 
 (req) => {
   console.log(req);
@@ -55,14 +55,14 @@ const validatorProduct = [
         throw new Error("Price must be a number between 0 to 10");
       return true;
     }),
-  check("category")
+  check("categories")
     .exists()
     .custom((value, { req }) => {
       if (value.length === 0) throw new Error("The category cannot be empty");
       return true;
     }),
   check("image").exists(),
-
+ 
   (req, res, next) => {
     validateResult(req, res, next);
   },
