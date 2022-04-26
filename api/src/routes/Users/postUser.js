@@ -12,7 +12,9 @@ router.post("/", async (req, res) =>{
 		age,
 		address,
 		image,
-    phone
+    phone,
+		is_admin,
+		is_admin_pro
 	} = req.body
 	try {
 		let newUser = await User.create({
@@ -24,7 +26,9 @@ router.post("/", async (req, res) =>{
       age,
       address,
       image,
-      phone
+      phone,
+			is_admin,
+			is_admin_pro
 		});
 		res.send("USUARIO AGREGADO")
 

@@ -15,11 +15,13 @@ router.put('/:id', async (req,res) => {
       age,
       address,
       image,
-      phone
+      phone,
+			is_admin,
+			is_admin_pro
 		} = req.body
 		console.log(id)
 		const updateUser = await User.update(
-			{name, lastName, nickname, email, email_verified, age, address, image, phone},
+			{name, lastName, nickname, email, email_verified, age, address, image, phone, is_admin, is_admin_pro},
 			{
 				where: {id}
 			}
