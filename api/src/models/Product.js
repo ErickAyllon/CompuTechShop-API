@@ -28,7 +28,13 @@ module.exports = (sequelize) => {
     },
     calification: {
       type: DataTypes.STRING,
-    }
+    },
+    comments: {
+      type: DataTypes.TEXT,
+    },
+    display: {
+      type: DataTypes.BOOLEAN,
+    },
   },
   {
     timestamps: false /* le saca el createAt y Updateat*/,
