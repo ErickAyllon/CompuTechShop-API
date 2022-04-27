@@ -27,10 +27,11 @@ const { validateResult } = require("../helpers/helperValidator");
     .custom((value, { req }) => {
       if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ]+$/.test(value))
         throw new Error("Invalid nickName caracters");
-      if (value.length < 2) throw new Error("the name entered is too short");
+      if (value.length < 1) throw new Error("the name entered is too short");
       return true;
     }),
   check("email"),
+  check("password"),//todo: Validacion de contraseña
   check("email_verified"),
   check("age")
     .exists()
@@ -40,7 +41,7 @@ const { validateResult } = require("../helpers/helperValidator");
       if (value > 100) throw new Error("Too old");
       return true;
     }),
-  check("address").exists(), //todo: Validacion de contraseña
+  check("address").exists(), 
   check("image").exists(),
   check("phone").exists(), //todo: validaciones que tiene que tener un telefono celular
 

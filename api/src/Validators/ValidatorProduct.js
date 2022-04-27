@@ -11,7 +11,7 @@ const validatorProduct = [
     .custom((value, { req }) => {
       if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ]+$/.test(value))
         throw new Error("Invalid name caracters");
-      if (value.length < 2) throw new Error("the name entered is too short");
+      if (value.length < 1) throw new Error("the name entered is too short");
       return true;
     }),
 
