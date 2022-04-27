@@ -5,9 +5,7 @@ const path = require("path");
 
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
-const sequelize = new Sequelize(
-  `postgres://postgres:1234@localhost/techshop`,
-  {
+const sequelize = new Sequelize(`postgres://postgres:guachin123@localhost/techshop`, {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   }
