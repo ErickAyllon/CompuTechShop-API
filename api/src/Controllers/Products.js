@@ -24,15 +24,15 @@ const productName = async (name) => {
     console.log(name);
     const nameDB = await Product.findAll({
       where: {
-        name: {[Op.iLike]: `%${name}%`},
+        name: { [Op.iLike]: `%${name}%` },
       },
       include: {
         model: Category,
-        attributes: ['name'],
+        attributes: ["name"],
         through: {
           attributes: [],
         },
-      }
+      },
     });
     // console.log(nameDB)
     // console.log(nameDB[0].dataValues.id);
