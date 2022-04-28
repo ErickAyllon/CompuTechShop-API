@@ -30,7 +30,7 @@ const updateShop = require("./Shops/updateShop")
 const postCarrusel = require("./Carrusel/postCarrusel");
 
 // start products
-router.use("/products", getProduct);
+router.use("/products", getProduct, getProductBrand, productCategory);
 router.use("/postProduct", validatorProduct, postProduct);
 router.use("/updateProduct", updateProduct);
 router.use("/deleteProduct", deleteProduct);
@@ -43,10 +43,7 @@ router.use("/deleteUser", deleteUser);
 router.use("/categories", Categories);
 router.use("/postCategory", validatorCategory, postCategory);
 router.use("/deleteCategory", deleteCategory);
-// end categories / start filtros
-router.use("/productBrand", getProductBrand);
-router.use("/productCategory", productCategory);
-// end filtros / start shop
+// end categories / start shop
 router.use("/postShop", postShop);
 router.use("/getShops", getShops, getShopByUserId);
 router.use("/updateShop", updateShop);
