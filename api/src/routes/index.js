@@ -32,7 +32,7 @@ const postCarrusel = require("./Carrusel/postCarrusel");
 
 // start products
 router.use("/products", getProduct);
-router.use("/postProduct", validatorProduct, postProduct);
+router.use("/postProduct", /*validatorProduct, */ postProduct);
 router.use("/updateProduct", updateProduct);
 router.use("/deleteProduct", deleteProduct);
 // end products / start Users
