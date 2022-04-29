@@ -18,9 +18,9 @@ const deleteCategory = require("./Categories/deleteCategory");
 const getProductBrand = require("../Filters/getProductBrand");
 const productCategory = require("../Filters/getProductCategory.js");
 // end filtros / start validaciones
-const { validatorProduct } = require("../Validators/ValidatorProduct");
+/* const { validatorProduct } = require("../Validators/ValidatorProduct");
 const { validatorUser } = require("../Validators/ValidatorUser");
-const { validatorCategory } = require("../Validators/ValidatorCategory");
+const { validatorCategory } = require("../Validators/ValidatorCategory"); */
 // end validaciones / start shops
 const postShop = require("./Shops/postShop");
 const getShops = require("./Shops/getShops");
@@ -29,19 +29,20 @@ const updateShop = require("./Shops/updateShop")
 // end shops / start carrusel
 const postCarrusel = require("./Carrusel/postCarrusel");
 
+
 // start products
 router.use("/products", getProduct);
-router.use("/postProduct", validatorProduct, postProduct);
+router.use("/postProduct", /*validatorProduct, */ postProduct);
 router.use("/updateProduct", updateProduct);
 router.use("/deleteProduct", deleteProduct);
 // end products / start Users
 router.use("/users", getUsers, getUserById);
-router.use("/postUser", validatorUser, postUser);
+router.use("/postUser", /* validatorUser, */ postUser);
 router.use("/updateUser", updateUser);
 router.use("/deleteUser", deleteUser);
 // end users / start categories
 router.use("/categories", Categories);
-router.use("/postCategory", validatorCategory, postCategory);
+router.use("/postCategory", /* validatorCategory, */ postCategory);
 router.use("/deleteCategory", deleteCategory);
 // end categories / start filtros
 router.use("/productBrand", getProductBrand);

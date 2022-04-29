@@ -2,7 +2,15 @@ const { Product, Category } = require("../db");
 const { Op } = require("sequelize");
 
 const products = async () => {
-  const arrDB = await Product.findAll();
+  const arrDB = await Product.findAll({
+    include: {
+      model: Category,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    }
+  });
   const result = await arrDB.map((p) => {
     return {
       id: p.id,
@@ -10,8 +18,9 @@ const products = async () => {
       image: p.image,
       price: p.price,
       quantity: p.quantity,
-      category: p.category,
+      category: p.categories.map((e) => e.name),
       brand: p.brand,
+      comments: p.comments,
       description: p.description,
       calification: p.calification,
     };
@@ -24,15 +33,15 @@ const productName = async (name) => {
     console.log(name);
     const nameDB = await Product.findAll({
       where: {
-        name: {[Op.iLike]: `%${name}%`},
+        name: { [Op.iLike]: `%${name}%` },
       },
       include: {
         model: Category,
-        attributes: ['name'],
+        attributes: ["name"],
         through: {
           attributes: [],
         },
-      }
+      },
     });
     // console.log(nameDB)
     // console.log(nameDB[0].dataValues.id);
@@ -46,6 +55,7 @@ const productName = async (name) => {
         quantity: p.dataValues.quantity,
         category: p.categories.map((e) => e.name),
         brand: p.dataValues.brand,
+        comments: p.comments,
         description: p.dataValues.description,
         calification: p.dataValues.calification,
       };

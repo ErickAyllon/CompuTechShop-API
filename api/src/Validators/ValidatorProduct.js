@@ -9,8 +9,7 @@ const validatorProduct = [
   check("name")
     .exists()
     .custom((value, { req }) => {
-      if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ]+$/.test(value))
-        throw new Error("Invalid name caracters");
+
       if (value.length < 1) throw new Error("the name entered is too short");
       return true;
     }),
@@ -18,8 +17,7 @@ const validatorProduct = [
   check("price")
     .exists()
     .custom((value, { req }) => {
-      value = Number(value);
-      if (isNaN(value)) throw new Error("Price must be a number");
+      value = Number(value);  //todo validacion por si incluye coma
       if (value <= 0) throw new Error("Price must be a positive number");
       return true;
     }),
@@ -27,8 +25,8 @@ const validatorProduct = [
     .exists()
     .custom((value, { req }) => {
       value = Number(value);
-      if (isNaN(value)) throw new Error("Price must be a number");
-      if (value < 0) throw new Error("Price must be a positive number");
+      if (isNaN(value)) throw new Error("quantity must be a number");
+      if (value < 0) throw new Error("quantity must be a positive number");
       return true;
     }),
   check("brand")
@@ -36,7 +34,7 @@ const validatorProduct = [
     .custom((value, { req }) => {
       if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ]+$/.test(value))
         throw new Error("Invalid brand caracters");
-      if (value.length < 2) throw new Error("the brand entered is too short");
+      if (value.length < 1) throw new Error("the brand entered is too short");
       return true;
     }),
   check("description")
@@ -49,10 +47,10 @@ const validatorProduct = [
   check("calification")
     .exists()
     .custom((value, { req }) => {
-      if (isNaN(value)) throw new Error("Price must be a number");
-      if (value < 0) throw new Error("Price must be a positive number");
+      if (isNaN(value)) throw new Error("calification must be a number");
+      if (value < 0) throw new Error("calification must be a positive number");
       if (value < 0 || value > 10)
-        throw new Error("Price must be a number between 0 to 10");
+        throw new Error("calification must be a number between 0 to 10");
       return true;
     }),
   check("categories")
