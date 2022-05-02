@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../../db")
+const {transporter} = require('../../Mails/index');
 
 
 router.post("/", async (req, res) =>{
@@ -30,8 +31,15 @@ router.post("/", async (req, res) =>{
 			is_admin,
 			is_admin_pro
 		});
+		//console.log(newUser.dataValues.email)
+		await transporter.sendMail({
+      from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
+      to: newUser.dataValues.email, // list of receivers
+      subject: "Welcome!", // Subject line
+      html: `<h4>Hola ${newUser.dataValues.name}!</h4> 
+			<p>Bienvenido a CompuTech Shop, espero que nos des mucha plata 😉<p/>`, // html body
+    });
 		res.send("USUARIO AGREGADO")
-
 	} catch (error) {
 		console.log(error, "rutaPost")
 	}	
