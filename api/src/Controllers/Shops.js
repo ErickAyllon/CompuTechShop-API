@@ -23,6 +23,39 @@ const getShops = async () => {
         products: e.products.map((p) => p.name),
       };
     });
+    //console.log("result", result);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getShopsById = async (id) => {
+  try {
+    const arrDB = await Shop.findAll({
+      where: {
+        id
+      },
+      include: {
+        model: Product,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+    // console.log(arrDB)
+    const result = await arrDB.map((e) => {
+      return {
+        id: e.id,
+        amount: e.amount,
+        date: e.date,
+        payment: e.payment,
+        state: e.state,
+        userId: e.userId,
+        products: e.products.map((p) => p.name),
+      };
+    });
     console.log("result", result);
     return result;
   } catch (error) {
@@ -61,4 +94,4 @@ const getShopByUserId = async (userId) => {
   }
 };
 
-module.exports = { getShops, getShopByUserId };
+module.exports = { getShops, getShopByUserId, getShopsById };
