@@ -27,7 +27,6 @@ router.put('/:id', async (req,res) => {
 				where: {id}
 			}
 		)
-		console.log(email)
 		await transporter.sendMail({
       from: '"CompuTech Shop" <computechshopok@gmail.com>', 
       to: email, 
