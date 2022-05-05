@@ -28,6 +28,9 @@ module.exports = (sequelize) => {
       state: {
         type: DataTypes.STRING,
       },
+      shop_state: {
+        type: DataTypes.STRING,
+      },
       // paid: {
       //   type: DataTypes.BOOLEAN,
       //   allowNull: false,
