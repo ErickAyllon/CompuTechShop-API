@@ -1,4 +1,5 @@
 const router = require("express").Router();
+
 const mercadopago = require("mercadopago");
 const axios = require("axios");
 require("dotenv").config();
@@ -19,7 +20,7 @@ router.post("/Checkout", (req, res) => {
       // Rutas del front a las que quiero redireccionar, tienen que mostrar los productos vendidos, una vez que la pagina cargue, tiene que hacer un efect
     },
     auto_return: "approved",
-    statement_descriptor: "TechShop",
+    statement_descriptor: "TechPayment",
     shipments: {
       cost: 0, //costo del envio
       mode: "not_specified",
@@ -66,7 +67,7 @@ router.get("/success", async (req, res) => {
     {
       headers: {
         Authorization:
-          "Bearer  TEST-3507538311860886-050423-2de4db8230a4c786faec56d456b7ca71-1118174717",
+          `Bearer  ${process.env.ACCESS_TOKEN}`,
       },
     }
   );
@@ -91,7 +92,6 @@ router.get("/success", async (req, res) => {
         //ajustar esto para que conicida con el modelo
         name: infoTotal.items[i].name,
         picture: infoTotal.items[i].picture,
-
         price: infoTotal.items[i].price,
         quantity: infoTotal.items[i].quantity,
         total_paid_amount: infoTotal.total_paid_amount,
@@ -132,13 +132,13 @@ const productCategory = require("../Filters/getProductCategory.js");
 /* const { validatorProduct } = require("../Validators/ValidatorProduct");
 const { validatorUser } = require("../Validators/ValidatorUser");
 const { validatorCategory } = require("../Validators/ValidatorCategory"); */
-// end validaciones / start shops
+// end validaciones / start Payments
 
-const postShop = require("./Shops/postShop");
-const getShops = require("./Shops/getShops");
-const getShopByUserId = require("./Shops/getShopByUserId");
-const updateShop = require("./Shops/updateShop");
-// end shops / start carrusel
+const postPayment = require("./Payments/postPayment");
+const getPayments = require("./Payments/getPayment");
+const getPaymentByUserId = require("./Payments/getPaymentByUserId");
+const updatePayment = require("./Payments/updatePayment");
+// end Payments / start carrusel
 
 const postCarrusel = require("./Carrusel/postCarrusel");
 
@@ -159,11 +159,11 @@ router.use("/deleteCategory", deleteCategory);
 // end categories / start filtros
 router.use("/productBrand", getProductBrand);
 router.use("/productCategory", productCategory);
-// end filtros / start shop
-router.use("/postShop", postShop);
-router.use("/getShops", getShops, getShopByUserId);
-router.use("/updateShop", updateShop);
-// end shops / start carrusel
+// end filtros / start Payment
+router.use("/postPayment", postPayment);
+router.use("/getPayments", getPayments, getPaymentByUserId);
+router.use("/updatePayment", updatePayment);
+// end Payments / start carrusel
 router.use("/postImgCarrusel", postCarrusel);
 // end carrusel / ....
 module.exports = router;

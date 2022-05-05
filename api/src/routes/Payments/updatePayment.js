@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Shop, User, Product } = require("../../db");
+const { Payment, User, Product } = require("../../db");
 
 router.put("/:id", async (req, res) => {
   try {
@@ -7,7 +7,7 @@ router.put("/:id", async (req, res) => {
 
     const { state } = req.body;
 
-    const updateShop = await Shop.update(
+    const updatePayment = await Payment.update(
       {
         state,
       },

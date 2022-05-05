@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const {Product } = require("../../db");
-const { getShops }  = require('../../Controllers/Shops');
+const { getPayments }  = require('../../Controllers/Payments');
 
 
 
@@ -8,7 +8,7 @@ const { getShops }  = require('../../Controllers/Shops');
 router.get('/', async (req,res) => {
 
 	try {
-      const info = await getShops()
+      const info = await getPayments()
       res.send(info)
 	}
 	catch(err){

@@ -1,8 +1,8 @@
-const { Product, Shop, User } = require("../db");
+const { Product, Payment, User } = require("../db");
 
-const getShops = async () => {
+const getPayments = async () => {
   try {
-    const arrDB = await Shop.findAll({
+    const arrDB = await Payment.findAll({
       include: {
         model: Product,
         attributes: ["name"],
@@ -30,9 +30,9 @@ const getShops = async () => {
   }
 };
 
-const getShopByUserId = async (userId) => {
+const getPaymentByUserId = async (userId) => {
   try {
-    const userShop = await Shop.findAll({
+    const userPayment = await Payment.findAll({
       where: {
         userId: userId,
       },
@@ -44,7 +44,7 @@ const getShopByUserId = async (userId) => {
         },
       },
     });
-    const result = await userShop.map((e) => {
+    const result = await userPayment.map((e) => {
       return {
         id: e.id,
         amount: e.amount,
@@ -61,4 +61,4 @@ const getShopByUserId = async (userId) => {
   }
 };
 
-module.exports = { getShops, getShopByUserId };
+module.exports = { getPayments, getPaymentByUserId };

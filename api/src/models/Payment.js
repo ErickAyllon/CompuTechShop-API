@@ -4,7 +4,7 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define(
-    "shop",
+    "payment",
     {
       // product: {
       //   type: DataTypes.STRING,
@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
       state: {
         type: DataTypes.STRING,
       },
-      shop_state: {
+      payment_state: {
         type: DataTypes.STRING,
       },
       // paid: {

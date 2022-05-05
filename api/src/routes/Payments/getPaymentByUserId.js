@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const {Product } = require("../../db");
-const { getShops, getShopByUserId }  = require('../../Controllers/Shops');
+const { getPayments, getPaymentByUserId }  = require('../../Controllers/Payments');
 
 router.get('/:userId', async (req,res) => {
   const {userId} = req.params
 	try {
-      const userShop = await getShopByUserId(userId)
-      res.send(userShop)
+      const userPayment = await getPaymentByUserId(userId)
+      res.send(userPayment)
     }
 	catch(err){
 		console.log(err)
