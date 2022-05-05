@@ -112,23 +112,19 @@ const updateProduct = require("./Products/updateProduct.js");
 const deleteProduct = require("./Products/deleteProduct");
 const getProduct = require("./Products/getProduct");
 // end products / start Users
-
 const postUser = require("./Users/postUser.js");
 const deleteUser = require("./Users/deleteUser.js");
 const updateUser = require("./Users/updateUser.js");
 const getUsers = require("./Users/getUsers.js");
 const getUserById = require("./Users/getUserById");
 // end users / start categories
-
 const Categories = require("./Categories/Categories");
 const postCategory = require("./Categories/postCategory");
 const deleteCategory = require("./Categories/deleteCategory");
 // end categories / start filtros
-
 const getProductBrand = require("../Filters/getProductBrand");
 const productCategory = require("../Filters/getProductCategory.js");
 // end filtros / start validaciones
-
 /* const { validatorProduct } = require("../Validators/ValidatorProduct");
 const { validatorUser } = require("../Validators/ValidatorUser");
 const { validatorCategory } = require("../Validators/ValidatorCategory"); */
