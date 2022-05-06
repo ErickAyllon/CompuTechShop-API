@@ -1,72 +1,71 @@
 const { User, Product } = require("../db");
 
 const users = async () => {
-  const arrDB = await User.findAll()
-  console.log(arrDB)
+  const arrDB = await User.findAll();
+  console.log(arrDB);
   const result = await arrDB.map((u) => {
     return {
       id: u.id,
-      name: u.name, 
-      lastName: u.lastName,
+      given_name: u.given_name,
+      family_name: u.family_name,
       nickname: u.nickname,
       email: u.email,
       email_verified: u.email_verified,
-      age: u.age,
+      birthday: u.birthday,
       address: u.address,
-      image: u.image,
-      phone: u.phone
-    }
-  })
-  return result
-}
+      picture: u.picture,
+      phone: u.phone,
+    };
+  });
+  return result;
+};
 
-const userName = async (name) => {
+const userName = async (given_name) => {
   try {
     const nameDB = await User.findAll({
       where: {
-        name: name
-      }
-    })
-    console.log(nameDB)
+        given_name: given_name,
+      },
+    });
+    console.log(nameDB);
     const user = await nameDB.map((u) => {
       return {
         id: u.dataValues.id,
-        name: u.dataValues.name, 
-        lastName: u.dataValues.lastName,
+        given_name: u.dataValues.given_name,
+        family_name: u.dataValues.family_name,
         nickname: u.dataValues.nickname,
         email: u.dataValues.email,
         email_verified: u.dataValues.email_verified,
-        age: u.dataValues.age,
+        birthday: u.dataValues.birthday,
         address: u.dataValues.address,
-        image: u.dataValues.image,
-        phone: u.dataValues.phone
-      }
-    })
-    return user[0]
-  }
-  catch(error){
-    console.log(error)
-  }
-}
-
-const userId = async (id) => {
-  try {
-    const dbUser = await User.findByPk(id)
-    return {
-      id: dbUser.id,
-      name: dbUser.name, 
-      lastName: dbUser.lastName,
-      nickname: dbUser.nickname,
-      email: dbUser.email,
-      email_verified: dbUser.email_verified,
-      age: dbUser.age,
-      address: dbUser.address,
-      image: dbUser.image,
-      phone: dbUser.phone
-    }
+        picture: u.dataValues.picture,
+        phone: u.dataValues.phone,
+      };
+    });
+    return user[0];
   } catch (error) {
     console.log(error);
   }
-}
+};
+
+const userId = async (id) => {
+  try {
+    const dbUser = await User.findByPk(id);
+    return {
+      id: dbUser.id,
+      given_name: dbUser.given_name,
+      family_name: dbUser.family_name,
+      nickname: dbUser.nickname,
+      email: dbUser.email,
+      email_verified: dbUser.email_verified,
+      birthday: dbUser.birthday,
+      address: dbUser.address,
+      picture: dbUser.picture,
+      phone: dbUser.phone,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 module.exports = { users, userName, userId };
