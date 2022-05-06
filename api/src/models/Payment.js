@@ -6,35 +6,30 @@ module.exports = (sequelize) => {
   sequelize.define(
     "payment",
     {
-      // product: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false,
-      // },
-      // user: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false,
-      // },
-      amount: {
+      name: {
         type: DataTypes.STRING,
-        allowNull: false,
+      },
+      picture: {
+        type: DataTypes.TEXT,
       },
       date: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
-      payment: {
+      price: {
+        type: DataTypes.FLOAT,
+      },
+      quantity: {
+        type: DataTypes.FLOAT,
+      },
+      total_paid_amount: {
+        type: DataTypes.FLOAT,
+      },
+      status: {
         type: DataTypes.STRING,
       },
-      state: {
+      status_detail: {
         type: DataTypes.STRING,
       },
-      payment_state: {
-        type: DataTypes.STRING,
-      },
-      // paid: {
-      //   type: DataTypes.BOOLEAN,
-      //   allowNull: false,
-      // }
     },
     {
       timestamps: false /* le saca el createAt y Updateat*/,
