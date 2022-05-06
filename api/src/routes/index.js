@@ -1,5 +1,7 @@
 const router = require("express").Router();
+
 // start products
+
 const postProduct = require("./Products/postProduct");
 const updateProduct = require("./Products/updateProduct.js");
 const deleteProduct = require("./Products/deleteProduct");
@@ -21,15 +23,16 @@ const productCategory = require("../Filters/getProductCategory.js");
 /* const { validatorProduct } = require("../Validators/ValidatorProduct");
 const { validatorUser } = require("../Validators/ValidatorUser");
 const { validatorCategory } = require("../Validators/ValidatorCategory"); */
-// end validaciones / start shops
-const postShop = require("./Shops/postShop");
-const getShops = require("./Shops/getShops");
-const getShopByUserId = require("./Shops/getShopByUserId");
-const getShopsById = require('./Shops/getShopById')
-const updateShop = require("./Shops/updateShop");
-// end shops / start carrusel
-const postCarrusel = require("./Carrusel/postCarrusel");
 
+const getPayments = require("./Payments/getPayment");
+const getPaymentByUserEmail = require("./Payments/getPaymentByUserEmail");
+const updatePayment = require("./Payments/updatePayment");
+// end Payments / start carrusel
+const postCarrusel = require("./Carrusel/postCarrusel");
+//end Carrusel / start MercadoPago
+const success = require("./MercadoPago/Success");
+const checkout = require("./MercadoPago/Checkout")
+// end MercadoPago / ...
 
 // start products
 router.use("/products", getProduct);
@@ -48,12 +51,12 @@ router.use("/deleteCategory", deleteCategory);
 // end categories / start filtros
 router.use("/productBrand", getProductBrand);
 router.use("/productCategory", productCategory);
-// end filtros / start shop
-router.use("/postShop", postShop);
-router.use("/getShops", getShops, getShopsById);
-router.use('/getUserShop', getShopByUserId)
-router.use("/updateShop", updateShop);
-// end shops / start carrusel
+// end filtros / start Payment
+router.use("/getPayments", getPayments, getPaymentByUserEmail);
+router.use("/updatePayment", updatePayment);
+// end Payments / start carrusel
 router.use("/postImgCarrusel", postCarrusel);
-// end carrusel / ....
+// end carrusel / Start MercadoPago
+router.use("/checkout", checkout);
+router.use("/success", success);
 module.exports = router;

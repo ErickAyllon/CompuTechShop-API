@@ -68,4 +68,26 @@ const userId = async (id) => {
   }
 };
 
-module.exports = { users, userName, userId };
+const userEmail = async (email) => {
+  try {
+    const dbUser = await User.findOne({ where: { email } });
+    return {
+      id: dbUser.id,
+      given_name: dbUser.given_name,
+      family_name: dbUser.family_name,
+      nickname: dbUser.nickname,
+      email: dbUser.email,
+      email_verified: dbUser.email_verified,
+      birthday: dbUser.birthday,
+      address: dbUser.address,
+      picture: dbUser.picture,
+      phone: dbUser.phone,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+module.exports = { users, userName, userId, userEmail };
+

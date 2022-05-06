@@ -4,35 +4,40 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define(
-    "shop",
+    "payment",
     {
-      // product: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false,
-      // },
-      // user: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false,
-      // },
-      amount: {
+      name: {
         type: DataTypes.STRING,
-        allowNull: false,
+      },
+      picture: {
+        type: DataTypes.TEXT,
       },
       date: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
-      payment: {
+      price: {
+        type: DataTypes.FLOAT,
+      },
+      quantity: {
+        type: DataTypes.FLOAT,
+      },
+      total_paid_amount: {
+        type: DataTypes.FLOAT,
+      },
+      status: {
+        type: DataTypes.STRING,
+      },
+      status_detail: {
         type: DataTypes.STRING,
       },
       state: {
         type: DataTypes.STRING,
       },
-      // paid: {
-      //   type: DataTypes.BOOLEAN,
-      //   allowNull: false,
-      // }
+      userEmail: {
+        type: DataTypes.STRING,
+      },
     },
+
     {
       timestamps: false /* le saca el createAt y Updateat*/,
       freezeTableName: true,

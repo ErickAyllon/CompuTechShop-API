@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
       is_admin,
       is_admin_pro,
     });
-    console.log(newUser.dataValues.email);
+    //console.log(newUser.dataValues.email);
     await transporter.sendMail({
       from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
       to: newUser.dataValues.email, // list of receivers
@@ -43,5 +43,6 @@ router.post("/", async (req, res) => {
     console.log(error, "rutaPost");
   }
 });
+
 
 module.exports = router;
