@@ -1,24 +1,22 @@
 const router = require("express").Router();
-const { Payment, User, Product } = require("../../db");
+const { Payment } = require("../../db");
 
-router.put("/:id", async (req, res) => {
+router.put("/", async (req, res) => {
   try {
-    const { id } = req.params;
+    const data = req.body;
 
-    const { state } = req.body;
-
-    const updatePayment = await Payment.update(
+    await Payment.update(
       {
-        state,
+        state: data.state,
       },
       {
-        where: { id },
+        where: { id: data.id },
       }
     );
 
-    res.send({ msg: "actualizado" });
+    res.send({ msg: "Actualizado" });
   } catch (err) {
-    console.log(err);
+    console.log("Error en updatePayment", err);
   }
 });
 

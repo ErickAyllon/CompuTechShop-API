@@ -1,17 +1,22 @@
 const router = require("express").Router();
-
+const { Payment } = require("../../db");
 const axios = require("axios");
 require("dotenv").config();
 
 router.get("/", async (req, res) => {
-  const id = req.query.payment_id;
-  const infoApi = await axios.get("https://api.mercadopago.com/v1/payments/" + id,
+
+  try {
+    const id = req.query.payment_id;
+
+  const infoApi = await axios.get(
+    "https://api.mercadopago.com/v1/payments/" + id,
     {
       headers: {
         Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
       },
     }
   );
+
   const infoTotal = {
     items: infoApi.data.additional_info.items.map((item) => {
       return {
@@ -34,15 +39,23 @@ router.get("/", async (req, res) => {
         name: infoTotal.items[i].name,
         picture: infoTotal.items[i].picture,
         price: infoTotal.items[i].price,
+        date: Date.now(),
         quantity: infoTotal.items[i].quantity,
         total_paid_amount: infoTotal.total_paid_amount,
         status: infoTotal.status,
         status_detail: infoTotal.status_detail,
+        state: "En Preparacion",
+        userEmail: "CORREO@HARDCODEADO.com",
       };
-      console.log(aux);
-      // await Payment.create(aux); 
+      
+      await Payment.create(aux);
     }
+    res.send({msg: "Pagos subidos a la base de datos"})
   }
+  } catch (error) {
+    console.log("ERROR EN SUCCESS", error)
+  }
+  
 });
 
 module.exports = router;

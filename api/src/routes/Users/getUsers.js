@@ -1,12 +1,16 @@
 const router = require("express").Router();
 const { User } = require('../../db');
-const { users, userName } = require('../../Controllers/Users');
+const { users, userName, userEmail } = require('../../Controllers/Users');
 
 router.get('/', async (req, res) => {
-  const {name} = req.query
+  const {name, email} = req.query
+
   try{
     if(name){
       const user = await userName(name)
+      res.send(user)
+    } else if(email){
+      const user = await userEmail(email)
       res.send(user)
     }
     else{

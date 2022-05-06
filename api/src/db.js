@@ -40,7 +40,7 @@ const { User, Payment, Product, Category, Carrusel } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-User.hasMany(Payment, { foreignKey: "userId" });
+User.hasMany(Payment);
 Payment.belongsTo(User);
 Payment.belongsToMany(Product, { through: "payment_product" });
 Product.belongsToMany(Payment, { through: "payment_product" });

@@ -30,7 +30,14 @@ module.exports = (sequelize) => {
       status_detail: {
         type: DataTypes.STRING,
       },
+      state: {
+        type: DataTypes.STRING,
+      },
+      userEmail: {
+        type: DataTypes.STRING,
+      },
     },
+
     {
       timestamps: false /* le saca el createAt y Updateat*/,
       freezeTableName: true,

@@ -11,9 +11,9 @@ router.post("/", (req, res) => {
   let preference = {
     items: [],
     back_urls: {
-      success: "https://www.musimundo.com/audio-tv-video/televisores/c/57",
-      failure: "https://www.musimundo.com/audio-tv-video/televisores/c/57",
-      pending: "https://www.musimundo.com/audio-tv-video/televisores/c/57",
+      success: "https://www.musimundo.com/",
+      failure: "https://www.musimundo.com/",
+      pending: "https://www.musimundo.com/",
       // Rutas del front a las que quiero redireccionar, tienen que mostrar los productos vendidos, una vez que la pagina cargue, tiene que hacer un efect
     },
     auto_return: "approved",
@@ -47,8 +47,8 @@ router.post("/", (req, res) => {
   mercadopago.preferences
     .create(preference)
     .then(function (response) {
-      /* res.send(response.response.init_point); */
-      res.redirect(response.response.init_point);
+      res.send(response.response.init_point);
+     /*  res.redirect(response.response.init_point); */
     })
     .catch(function (error) {
       console.log(error);

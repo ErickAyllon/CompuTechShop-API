@@ -1,4 +1,4 @@
-const { Product, Payment, User } = require("../db");
+const { Product, Payment } = require("../db");
 
 const getPayments = async () => {
   try {
@@ -19,7 +19,7 @@ const getPayments = async () => {
         date: e.date,
         payment: e.payment,
         state: e.state,
-        userId: e.userId,
+        userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
       };
     });
@@ -30,11 +30,11 @@ const getPayments = async () => {
   }
 };
 
-const getPaymentByUserId = async (userId) => {
+const getPaymentByUserEmail = async (userEmail) => {
   try {
     const userPayment = await Payment.findAll({
       where: {
-        userId: userId,
+        userEmail: userEmail,
       },
       include: {
         model: Product,
@@ -51,7 +51,7 @@ const getPaymentByUserId = async (userId) => {
         date: e.date,
         payment: e.payment,
         state: e.state,
-        userId: e.userId,
+        userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
       };
     });
@@ -61,4 +61,4 @@ const getPaymentByUserId = async (userId) => {
   }
 };
 
-module.exports = { getPayments, getPaymentByUserId };
+module.exports = { getPayments, getPaymentByUserEmail };
