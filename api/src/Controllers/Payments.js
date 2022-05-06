@@ -32,7 +32,7 @@ const getPayments = async () => {
 
 const getPaymentsById = async (id) => {
   try {
-    const arrDB = await Shop.findAll({
+    const arrDB = await Payment.findAll({
       where: {
         id
       },
@@ -52,7 +52,7 @@ const getPaymentsById = async (id) => {
         date: e.date,
         payment: e.payment,
         state: e.state,
-        userId: e.userId,
+        userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
       };
     });
