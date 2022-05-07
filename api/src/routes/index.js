@@ -28,9 +28,8 @@ const getShopByUserId = require("./Shops/getShopByUserId");
 const updateShop = require("./Shops/updateShop")
 // end shops / start carrusel
 const postCarrusel = require("./Carrusel/postCarrusel");
-
 // start products
-router.use("/products", getProduct, getProductBrand, productCategory);
+router.use("/products", getProduct);
 router.use("/postProduct", validatorProduct, postProduct);
 router.use("/updateProduct", updateProduct);
 router.use("/deleteProduct", deleteProduct);
@@ -43,7 +42,10 @@ router.use("/deleteUser", deleteUser);
 router.use("/categories", Categories);
 router.use("/postCategory", validatorCategory, postCategory);
 router.use("/deleteCategory", deleteCategory);
-// end categories / start shop
+// end categories / start filtros
+router.use("/productBrand", getProductBrand);
+router.use("/productCategory", productCategory);
+// end filtros / start shop
 router.use("/postShop", postShop);
 router.use("/getShops", getShops, getShopByUserId);
 router.use("/updateShop", updateShop);

@@ -4,13 +4,13 @@ const { User } = require("../../db")
 
 router.post("/", async (req, res) =>{
 	const {
-		name, 
-		lastName,
+		given_name, 
+		family_name,
 		nickname,
 		email,
 		email_verified,
 		age,
-		address,
+		addressgiven_,
 		image,
     phone,
 		is_admin,
@@ -18,8 +18,8 @@ router.post("/", async (req, res) =>{
 	} = req.body
 	try {
 		let newUser = await User.create({
-      name, 
-      lastName,
+      given_name, 
+      family_name,
       nickname,
       email,
       email_verified,

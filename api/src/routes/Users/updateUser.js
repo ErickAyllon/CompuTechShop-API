@@ -7,8 +7,8 @@ router.put('/:id', async (req,res) => {
 		const {id} = req.params
 		console.log(id)
 		const {
-      name, 
-      lastName,
+      given_name, 
+      family_name,
       nickname,
       email,
       email_verified,

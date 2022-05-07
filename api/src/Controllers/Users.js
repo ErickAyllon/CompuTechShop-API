@@ -6,8 +6,8 @@ const users = async () => {
   const result = await arrDB.map((u) => {
     return {
       id: u.id,
-      name: u.name, 
-      lastName: u.lastName,
+      given_name: u.given_name, 
+      family_name: u.family_name,
       nickname: u.nickname,
       email: u.email,
       email_verified: u.email_verified,
@@ -31,8 +31,8 @@ const userName = async (name) => {
     const user = await nameDB.map((u) => {
       return {
         id: u.dataValues.id,
-        name: u.dataValues.name, 
-        lastName: u.dataValues.lastName,
+        given_name: u.given_name.name, 
+        family_name: u.family_name.lastName,
         nickname: u.dataValues.nickname,
         email: u.dataValues.email,
         email_verified: u.dataValues.email_verified,
@@ -54,8 +54,8 @@ const userId = async (id) => {
     const dbUser = await User.findByPk(id)
     return {
       id: dbUser.id,
-      name: dbUser.name, 
-      lastName: dbUser.lastName,
+      given_name: dbUser.given_name, 
+      family_name: dbUser.family_name,
       nickname: dbUser.nickname,
       email: dbUser.email,
       email_verified: dbUser.email_verified,
