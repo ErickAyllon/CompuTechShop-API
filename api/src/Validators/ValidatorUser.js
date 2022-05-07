@@ -2,11 +2,11 @@ const { check } = require("express-validator");
 const { validateResult } = require("../helpers/helperValidator");
 
 (req) => {
-    console.log(req);
-  };
+  console.log(req);
+};
 
-  const validatorUser = [
-    check("name")
+const validatorUser = [
+  check("name")
     .exists()
     .custom((value, { req }) => {
       if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ]+$/.test(value))
@@ -25,13 +25,12 @@ const { validateResult } = require("../helpers/helperValidator");
   check("nickname")
     .exists() //todo: Validacion para nombre de usuario, deberia poder poner numeros y signos
     .custom((value, { req }) => {
-      if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ]+$/.test(value))
-        throw new Error("Invalid nickName caracters");
-      if (value.length < 1) throw new Error("the name entered is too short");
+      if (value.length < 1)
+        throw new Error("the nickName entered is too short");
       return true;
     }),
   check("email"),
-  check("password"),//todo: Validacion de contraseña
+  check("password"), //todo: Validacion de contraseña
   check("email_verified"),
   check("age")
     .exists()
@@ -41,13 +40,13 @@ const { validateResult } = require("../helpers/helperValidator");
       if (value > 100) throw new Error("Too old");
       return true;
     }),
-  check("address").exists(), 
-  check("image").exists(),
-  check("phone").exists(), //todo: validaciones que tiene que tener un telefono celular
+  check("address"),
+  check("image"),
+  check("phone"), //todo: validaciones que tiene que tener un telefono celular
 
   (req, res, next) => {
     validateResult(req, res, next);
   },
-  ];
-  
-  module.exports = { validatorUser };
+];
+
+module.exports = { validatorUser };

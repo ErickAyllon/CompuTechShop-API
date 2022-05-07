@@ -26,8 +26,10 @@ router.put('/:id', async (req,res) => {
 				name: categories
 			}
 		})
+		//console.log('id: ', dbCategory.dataValues.id)
 		const product = await Product.findOne({where: {id}})
-		product.setCategory(dbCategory.map(c => c.id))
+		//console.log(product)
+		product.setCategories(dbCategory.map(c => c.id))
 		res.send({msg: 'actualizado'})
 	}
 	catch(err){

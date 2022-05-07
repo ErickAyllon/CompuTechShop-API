@@ -21,7 +21,12 @@ const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 
 // Syncing all the models at once.
+<<<<<<< HEAD
 conn.sync({ force: true }).then(() => {
+=======
+conn.sync({ force: false }).then(() => { // si tenes en true, renueva la base de datos
+
+>>>>>>> 32853f468d4ca2bc90049b82e9cc21f0eea578e7
   server.listen(3001, () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
   });

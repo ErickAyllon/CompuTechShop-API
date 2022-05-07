@@ -32,13 +32,13 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
-      age: {
+      birthday: {
         type: DataTypes.STRING,
       },
       address: {
         type: DataTypes.STRING,
       },
-      image: {
+      picture: {
         type: DataTypes.STRING,
       },
       phone: {

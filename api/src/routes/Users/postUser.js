@@ -1,40 +1,48 @@
 const router = require("express").Router();
-const { User } = require("../../db")
+const { User } = require("../../db");
+const { transporter } = require("../../Mails/index");
 
-
-router.post("/", async (req, res) =>{
-	const {
-		given_name, 
-		family_name,
-		nickname,
-		email,
-		email_verified,
-		age,
-		addressgiven_,
-		image,
+router.post("/", async (req, res) => {
+  const {
+    given_name,
+    family_name,
+    nickname,
+    email,
+    email_verified,
+    birthday,
+    address,
+    picture,
     phone,
-		is_admin,
-		is_admin_pro
-	} = req.body
-	try {
-		let newUser = await User.create({
-      given_name, 
+    is_admin,
+    is_admin_pro,
+  } = req.body;
+  try {
+    let newUser = await User.create({
+      given_name,
       family_name,
       nickname,
       email,
       email_verified,
-      age,
+      birthday,
       address,
-      image,
+      picture,
       phone,
-			is_admin,
-			is_admin_pro
-		});
-		res.send("USUARIO AGREGADO")
+      is_admin,
+      is_admin_pro,
+    });
+    //console.log(newUser.dataValues.email);
+    await transporter.sendMail({
+      from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
+      to: newUser.dataValues.email, // list of receivers
+      subject: "Welcome!", // Subject line
+      html: `<h4>Hola ${newUser.dataValues.given_name}!</h4>
+    		<p>Bienvenido a CompuTech Shop, espero que nos des mucha plata 😉<p/>`, // html body
+    });
+    res.send("USUARIO AGREGADO");
+  } catch (error) {
+    console.log(error, "rutaPost");
+  }
+});
 
-	} catch (error) {
-		console.log(error, "rutaPost")
-	}	
-})
 
 module.exports = router;
