@@ -1,14 +1,14 @@
 const router = require("express").Router();
 const {Product } = require("../../db");
-const { getShops }  = require('../../Controllers/Shops');
+const { getShopsById }  = require('../../Controllers/Shops');
 
 
 
 
-router.get('/', async (req,res) => {
-
+router.get('/:id', async (req,res) => {
+  const {id} = req.params
 	try {
-      const info = await getShops()
+      const info = await getShopsById(id)
       res.send(info)
 	}
 	catch(err){

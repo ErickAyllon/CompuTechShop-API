@@ -12,11 +12,11 @@ module.exports = (sequelize) => {
         allowNull: false,
         primaryKey: true,
       },
-      name: {
+      given_name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      lastName: {
+      family_name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -32,13 +32,13 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
-      age: {
+      birthday: {
         type: DataTypes.STRING,
       },
       address: {
         type: DataTypes.STRING,
       },
-      image: {
+      picture: {
         type: DataTypes.STRING,
       },
       phone: {
