@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Payment } = require("../../db");
-const {getPaymentsById} = require('../../Controllers/Payments')
+const {getPaymentsById,getPayments} = require('../../Controllers/Payments')
 
 router.get("/", async (req, res) => {
   const {id} = req.query
@@ -9,9 +9,7 @@ router.get("/", async (req, res) => {
       const payments = await getPaymentsById(id)
       res.send(payments);
     } else {
-      const payments = await Payment.findAll({
-       order: [["id", "ASC"]],
-      });
+      const payments = await getPayments()
       res.send(payments);
     }
   } catch (err) {

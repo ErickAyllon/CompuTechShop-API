@@ -15,9 +15,14 @@ const getPayments = async () => {
     const result = await arrDB.map((e) => {
       return {
         id: e.id,
-        amount: e.amount,
+        name: e.name,
+        picture: e.picture,
+        price: e.price,
         date: e.date,
-        payment: e.payment,
+        quantity: e.quantity,
+        total_paid_amount: e.total_paid_amount,
+        status: e.status,
+        status_detail: e.status_detail,
         state: e.state,
         userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
@@ -48,15 +53,20 @@ const getPaymentsById = async (id) => {
     const result = await arrDB.map((e) => {
       return {
         id: e.id,
-        amount: e.amount,
+        name: e.name,
+        picture: e.picture,
+        price: e.price,
         date: e.date,
-        payment: e.payment,
+        quantity: e.quantity,
+        total_paid_amount: e.total_paid_amount,
+        status: e.status,
+        status_detail: e.status_detail,
         state: e.state,
         userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
       };
     });
-    console.log("result", result);
+    
     return result;
   } catch (error) {
     console.log(error);
@@ -80,9 +90,14 @@ const getPaymentByUserEmail = async (userEmail) => {
     const result = await userPayment.map((e) => {
       return {
         id: e.id,
-        amount: e.amount,
+        name: e.name,
+        picture: e.picture,
+        price: e.price,
         date: e.date,
-        payment: e.payment,
+        quantity: e.quantity,
+        total_paid_amount: e.total_paid_amount,
+        status: e.status,
+        status_detail: e.status_detail,
         state: e.state,
         userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
