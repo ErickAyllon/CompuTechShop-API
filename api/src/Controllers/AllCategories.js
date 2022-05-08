@@ -2,6 +2,7 @@ const { Category } = require("../db");
 
 
 
+
 const allCategories = async () => {
     try {
       const categoriesDB = await Category.findAll();
@@ -23,5 +24,6 @@ const allCategories = async () => {
       console.log(error);
     }
   };
+  allCategories();
 
   module.exports = { allCategories };

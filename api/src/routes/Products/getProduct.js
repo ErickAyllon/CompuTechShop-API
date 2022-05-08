@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {Product } = require("../../db");
+
 const { products, productName }  = require('../../Controllers/Products');
 
 
