@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { Product, Payment } = require("../../db");
+const { Product, Payment, User } = require("../../db");
+const { transporter } = require("../../Mails/index");
 const axios = require("axios");
 
 require("dotenv").config();
@@ -34,10 +35,11 @@ router.get("/", async (req, res) => {
 
     if (infoTotal) {
       /* const productos = [] */
+      let aux = {}
       for (let i = 0; i < infoTotal.items.length; i++) {
         let actualDate = new Intl.DateTimeFormat('es-ES', { dateStyle: 'full', timeStyle: 'long' }).format(new Date());
       
-        let aux = {
+        aux = {
           //ajustar esto para que conicida con el modelo
           name: infoTotal.items[i].name,
           picture: infoTotal.items[i].picture,
@@ -70,6 +72,17 @@ router.get("/", async (req, res) => {
           }
         );
       }
+      let user = await User.findOne({
+        where: {email: aux.userEmail}
+      })
+     
+      await transporter.sendMail({
+        from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
+        to: aux.userEmail, // list of receivers
+        subject: "Welcome!", // Subject line
+        html: `<h4>Hola ${user.dataValues.given_name}!</h4>
+          <p>Tu compra se ha realizado con éxito!<p/>`, // html body
+      });
       /* await newPayment.addProduct(productos); */
       res.send({ msg: "Pagos subidos a la base de datos" });
     }
