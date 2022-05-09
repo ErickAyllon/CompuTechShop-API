@@ -23,10 +23,11 @@ const productCategory = require("../Filters/getProductCategory.js");
 /* const { validatorProduct } = require("../Validators/ValidatorProduct");
 const { validatorUser } = require("../Validators/ValidatorUser");
 const { validatorCategory } = require("../Validators/ValidatorCategory"); */
-
+//end validaciones / start payments
 const getPayments = require("./Payments/getPayment");
 const getPaymentByUserEmail = require("./Payments/getPaymentByUserEmail");
 const updatePayment = require("./Payments/updatePayment");
+const getAmountPaymentsUserEmail = require("./Payments/getAmountPaymentsUserEmail")
 // end Payments / start carrusel
 const postCarrusel = require("./Carrusel/postCarrusel");
 //end Carrusel / start MercadoPago
@@ -54,6 +55,7 @@ router.use("/productCategory", productCategory);
 // end filtros / start Payment
 router.use("/getPayments", getPayments, getPaymentByUserEmail);
 router.use("/updatePayment", updatePayment);
+router.use("/getPaymentAcount", getAmountPaymentsUserEmail)
 // end Payments / start carrusel
 router.use("/postImgCarrusel", postCarrusel);
 // end carrusel / Start MercadoPago

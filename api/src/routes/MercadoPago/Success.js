@@ -8,7 +8,7 @@ require("dotenv").config();
 // Una vez este completamente funcional, //todo borrar el: "CORREO@HARDCODEADO.com"
 router.get("/", async (req, res) => {
   try {
-    const { id, successEmail } = req.query
+    const { id, successEmail } = req.query;
     const infoApi = await axios.get(
       "https://api.mercadopago.com/v1/payments/" + id,
       {
@@ -35,12 +35,14 @@ router.get("/", async (req, res) => {
     if (infoTotal) {
       /* const productos = [] */
       for (let i = 0; i < infoTotal.items.length; i++) {
+        let actualDate = new Intl.DateTimeFormat('es-ES', { dateStyle: 'full', timeStyle: 'long' }).format(new Date());
+      
         let aux = {
           //ajustar esto para que conicida con el modelo
           name: infoTotal.items[i].name,
           picture: infoTotal.items[i].picture,
           price: infoTotal.items[i].price,
-          date: Date.now(),
+          date: actualDate,
           quantity: infoTotal.items[i].quantity,
           total_paid_amount: infoTotal.total_paid_amount,
           status: infoTotal.status,
@@ -56,9 +58,9 @@ router.get("/", async (req, res) => {
 
         let newPayment = await Payment.create(aux);
         let product = await Product.findAll({
-          where: { name: aux.name }
-        })
-        newPayment.addProduct(product)
+          where: { name: aux.name },
+        });
+        newPayment.addProduct(product);
         /*    productos.push(cambioCantidad) */
 
         const updateProduct = await Product.update(
