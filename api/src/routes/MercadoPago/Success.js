@@ -46,8 +46,8 @@ router.get("/", async (req, res) => {
           total_paid_amount: infoTotal.total_paid_amount,
           status: infoTotal.status,
           status_detail: infoTotal.status_detail,
-          state: "En Preparacion",
-          userEmail: successEmail ? successEmail : "CORREO@HARDCODEADO.com",
+          state: "In process",
+          userEmail: /* successEmail ? successEmail : */ "CORREO@HARDCODEADO.com",
         };
         const cambioCantidad = await Product.findOne({
           where: {
