@@ -8,8 +8,7 @@ require("dotenv").config();
 // Una vez este completamente funcional, //todo borrar el: "CORREO@HARDCODEADO.com"
 router.get("/", async (req, res) => {
   try {
-    const id = req.query.payment_id;
-     const successEmail = req.query //no se como lo mandes pero completalo ahi. Abajo ya esta el codigo completado
+    const { id, successEmail } = req.query
     const infoApi = await axios.get(
       "https://api.mercadopago.com/v1/payments/" + id,
       {
@@ -56,21 +55,21 @@ router.get("/", async (req, res) => {
         });
 
         let newPayment = await Payment.create(aux);
-       let product = await Product.findAll({
-         where:{name: aux.name}
-       })
-       newPayment.addProduct(product)
-     /*    productos.push(cambioCantidad) */
+        let product = await Product.findAll({
+          where: { name: aux.name }
+        })
+        newPayment.addProduct(product)
+        /*    productos.push(cambioCantidad) */
 
         const updateProduct = await Product.update(
           { quantity: cambioCantidad.quantity - infoTotal.items[i].quantity },
           {
             where: { name: aux.name },
           }
-          );
-        }
-        /* await newPayment.addProduct(productos); */
-        res.send({ msg: "Pagos subidos a la base de datos" });
+        );
+      }
+      /* await newPayment.addProduct(productos); */
+      res.send({ msg: "Pagos subidos a la base de datos" });
     }
   } catch (error) {
     console.log("ERROR EN SUCCESS", error);
