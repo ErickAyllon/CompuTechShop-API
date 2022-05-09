@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
       to: newUser.dataValues.email, // list of receivers
       subject: "Welcome!", // Subject line
       html: `<h4>Hola ${newUser.dataValues.given_name}!</h4>
-    		<p>Bienvenido a CompuTech Shop, espero que nos des mucha plata 😉<p/>`, // html body
+    		<p>¡Bienvenido a CompuTech Shop!<p/>`, // html body
     });
     res.send("USUARIO AGREGADO");
   } catch (error) {
