@@ -1,16 +1,18 @@
 const router = require("express").Router();
 const { Payment } = require("../../db");
 
-router.put("/", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
-    const data = req.body;
+    const {id} = req.params
+    const {state} = req.body;
+    console.log(id, state)
 
     await Payment.update(
       {
-        state: data.state,
+        state: state,
       },
       {
-        where: { id: data.id },
+        where: { id },
       }
     );
 
