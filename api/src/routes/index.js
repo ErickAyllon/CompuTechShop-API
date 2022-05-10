@@ -23,16 +23,21 @@ const productCategory = require("../Filters/getProductCategory.js");
 /* const { validatorProduct } = require("../Validators/ValidatorProduct");
 const { validatorUser } = require("../Validators/ValidatorUser");
 const { validatorCategory } = require("../Validators/ValidatorCategory"); */
-
+//end validaciones / start payments
 const getPayments = require("./Payments/getPayment");
 const getPaymentByUserEmail = require("./Payments/getPaymentByUserEmail");
 const updatePayment = require("./Payments/updatePayment");
+const getAmountPaymentsUserEmail = require("./Payments/getAmountPaymentsUserEmail")
 // end Payments / start carrusel
 const postCarrusel = require("./Carrusel/postCarrusel");
 //end Carrusel / start MercadoPago
 const success = require("./MercadoPago/Success");
 const checkout = require("./MercadoPago/Checkout")
-// end MercadoPago / ...
+// end MercadoPago / start Reviews
+const getReviews = require('./Reviews/getReviews')
+const postReview = require('./Reviews/postReview')
+const updateReview = require('./Reviews/updateReview')
+const deleteReview = require('./Reviews/deleteReview')
 
 // start products
 router.use("/products", getProduct);
@@ -54,9 +59,12 @@ router.use("/productCategory", productCategory);
 // end filtros / start Payment
 router.use("/getPayments", getPayments, getPaymentByUserEmail);
 router.use("/updatePayment", updatePayment);
+router.use("/getPaymentAcount", getAmountPaymentsUserEmail)
 // end Payments / start carrusel
 router.use("/postImgCarrusel", postCarrusel);
 // end carrusel / Start MercadoPago
 router.use("/checkout", checkout);
 router.use("/success", success);
+//end Mercado Pago / start Review
+router.use('/reviews', getReviews, postReview, updateReview, deleteReview)
 module.exports = router;

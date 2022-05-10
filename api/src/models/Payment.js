@@ -6,7 +6,10 @@ module.exports = (sequelize) => {
   sequelize.define(
     "payment",
     {
-      name: {
+      idTogether:{
+        type: DataTypes.FLOAT,
+      }
+      ,name: {
         type: DataTypes.STRING,
       },
       picture: {

@@ -28,6 +28,8 @@ router.put("/:id", async (req, res) => {
       phone,
       is_admin,
       is_admin_pro,
+      password,
+      is_banned
     } = req.body;
     //console.log(id)
     const updateUser = await User.update(
@@ -43,6 +45,8 @@ router.put("/:id", async (req, res) => {
         phone,
         is_admin,
         is_admin_pro,
+        password,
+        is_banned
       },
       {
         where: { id },

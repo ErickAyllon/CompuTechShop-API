@@ -50,6 +50,12 @@ module.exports = (sequelize) => {
       is_admin_pro: {
         type: DataTypes.BOOLEAN,
       },
+      password: {
+        type: DataTypes.STRING,
+      },
+      is_banned: {
+        type: DataTypes.BOOLEAN,
+      },
     },
     {
       timestamps: false /* le saca el createAt y Updateat*/,
