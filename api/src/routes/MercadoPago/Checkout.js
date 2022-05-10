@@ -12,8 +12,8 @@ router.post("/", (req, res) => {
     items: [],
     back_urls: {
       success: "http://localhost:3000/purchaseResult",
-      failure: "http://localhost:3000/failureResult",
-      pending: "http://localhost:3000/pendingResult",
+      failure: "http://localhost:3000/purchaseResult",
+      pending: "http://localhost:3000/purchaseResult",
       // Rutas del front a las que quiero redireccionar, tienen que mostrar los productos vendidos, una vez que la pagina cargue, tiene que hacer un efect
     },
     auto_return: "approved",

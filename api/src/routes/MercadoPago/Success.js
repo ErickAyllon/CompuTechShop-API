@@ -5,8 +5,8 @@ const axios = require("axios");
 
 require("dotenv").config();
 
-// PARA COLOCAR EL EMAIL revisar y completar linea 12
-// Una vez este completamente funcional, //todo borrar el: "CORREO@HARDCODEADO.com"
+let idTogether = 0;
+
 router.get("/", async (req, res) => {
   try {
     const { id, successEmail } = req.query;
@@ -35,23 +35,28 @@ router.get("/", async (req, res) => {
 
     if (infoTotal) {
       /* const productos = [] */
-      let aux = {}
+
       for (let i = 0; i < infoTotal.items.length; i++) {
-        let actualDate = new Intl.DateTimeFormat('es-ES', { dateStyle: 'full', timeStyle: 'long' }).format(new Date());
-      
-        aux = {
+        let actualDate = new Intl.DateTimeFormat("es-ES", {
+          dateStyle: "full",
+          timeStyle: "long",
+        }).format(new Date());
+        let aux = {
           //ajustar esto para que conicida con el modelo
+          idTogether: idTogether,
           name: infoTotal.items[i].name,
           picture: infoTotal.items[i].picture,
           price: infoTotal.items[i].price,
           date: actualDate,
           quantity: infoTotal.items[i].quantity,
-          total_paid_amount: infoTotal.total_paid_amount,
+          total_paid_amount:
+            infoTotal.items[i].price * infoTotal.items[i].quantity,
           status: infoTotal.status,
           status_detail: infoTotal.status_detail,
           state: "In process",
           userEmail: successEmail ? successEmail : "CORREO@HARDCODEADO.com",
         };
+
         const cambioCantidad = await Product.findOne({
           where: {
             name: aux.name,
@@ -71,18 +76,21 @@ router.get("/", async (req, res) => {
             where: { name: aux.name },
           }
         );
-      }
-      let user = await User.findOne({
-        where: {email: aux.userEmail}
-      })
-     
-      await transporter.sendMail({
-        from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
-        to: aux.userEmail, // list of receivers
-        subject: "Welcome!", // Subject line
-        html: `<h4>Hola ${user.dataValues.given_name}!</h4>
+
+        let user = await User.findOne({
+          where: { email: aux.userEmail },
+        });
+
+        await transporter.sendMail({
+          from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
+          to: aux.userEmail, // list of receivers
+          subject: "Welcome!", // Subject line
+          html: `<h4>Hola ${user.dataValues.given_name}!</h4>
           <p>Tu compra se ha realizado con éxito!<p/>`, // html body
-      });
+        });
+      }
+      idTogether = idTogether + 1;
+
       /* await newPayment.addProduct(productos); */
       res.send({ msg: "Pagos subidos a la base de datos" });
     }

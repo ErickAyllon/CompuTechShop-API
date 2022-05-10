@@ -15,6 +15,7 @@ const getPayments = async () => {
     const result = await arrDB.map((e) => {
       return {
         id: e.id,
+        idTogether: e.idTogether,
         name: e.name,
         picture: e.picture,
         price: e.price,
@@ -53,6 +54,7 @@ const getPaymentsById = async (id) => {
     const result = await arrDB.map((e) => {
       return {
         id: e.id,
+        idTogether: e.idTogether,
         name: e.name,
         picture: e.picture,
         price: e.price,
@@ -90,6 +92,7 @@ const getPaymentByUserEmail = async (userEmail) => {
     const result = await userPayment.map((e) => {
       return {
         id: e.id,
+        idTogether: e.idTogether,
         name: e.name,
         picture: e.picture,
         price: e.price,

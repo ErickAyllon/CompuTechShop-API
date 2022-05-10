@@ -15,6 +15,8 @@ router.post("/", async (req, res) => {
     phone,
     is_admin,
     is_admin_pro,
+    password,
+    is_banned
   } = req.body;
   try {
     let newUser = await User.create({
@@ -29,6 +31,8 @@ router.post("/", async (req, res) => {
       phone,
       is_admin,
       is_admin_pro,
+      password,
+      is_banned
     });
     //console.log(newUser.dataValues.email);
     await transporter.sendMail({
