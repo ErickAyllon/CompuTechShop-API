@@ -35,21 +35,13 @@ router.get("/", async (req, res) => {
 
     if (infoTotal) {
       /* const productos = [] */
-<<<<<<< Updated upstream
-      let aux = {}
-      for (let i = 0; i < infoTotal.items.length; i++) {
-        let actualDate = new Intl.DateTimeFormat('es-ES', { dateStyle: 'full', timeStyle: 'long' }).format(new Date());
-      
-        aux = {
-=======
-      console.log(idTogether);
+
       for (let i = 0; i < infoTotal.items.length; i++) {
         let actualDate = new Intl.DateTimeFormat("es-ES", {
           dateStyle: "full",
           timeStyle: "long",
         }).format(new Date());
         let aux = {
->>>>>>> Stashed changes
           //ajustar esto para que conicida con el modelo
           idTogether: idTogether,
           name: infoTotal.items[i].name,
@@ -64,7 +56,7 @@ router.get("/", async (req, res) => {
           state: "En Preparacion",
           userEmail: successEmail ? successEmail : "CORREO@HARDCODEADO.com",
         };
-        console.log("AUXXXXXXXXXXXXXXX", aux);
+
         const cambioCantidad = await Product.findOne({
           where: {
             name: aux.name,
@@ -84,23 +76,21 @@ router.get("/", async (req, res) => {
             where: { name: aux.name },
           }
         );
-      }
-<<<<<<< Updated upstream
-      let user = await User.findOne({
-        where: {email: aux.userEmail}
-      })
-     
-      await transporter.sendMail({
-        from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
-        to: aux.userEmail, // list of receivers
-        subject: "Welcome!", // Subject line
-        html: `<h4>Hola ${user.dataValues.given_name}!</h4>
+
+        let user = await User.findOne({
+          where: { email: aux.userEmail },
+        });
+
+        await transporter.sendMail({
+          from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
+          to: aux.userEmail, // list of receivers
+          subject: "Welcome!", // Subject line
+          html: `<h4>Hola ${user.dataValues.given_name}!</h4>
           <p>Tu compra se ha realizado con éxito!<p/>`, // html body
-      });
-=======
+        });
+      }
       idTogether = idTogether + 1;
-      console.log(idTogether);
->>>>>>> Stashed changes
+
       /* await newPayment.addProduct(productos); */
       res.send({ msg: "Pagos subidos a la base de datos" });
     }
