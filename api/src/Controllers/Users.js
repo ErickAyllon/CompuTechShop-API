@@ -15,6 +15,10 @@ const users = async () => {
       address: u.address,
       picture: u.picture,
       phone: u.phone,
+      is_admin:  u.dataValues.is_admin,
+      is_admin_pro:  u.dataValues.is_admin_pro,
+      password:  u.dataValues.password,
+      is_banned:  u.dataValues.is_banned
     };
   });
   return result;
@@ -40,6 +44,10 @@ const userName = async (given_name) => {
         address: u.dataValues.address,
         picture: u.dataValues.picture,
         phone: u.dataValues.phone,
+        is_admin:  u.dataValues.is_admin,
+        is_admin_pro:  u.dataValues.is_admin_pro,
+        password:  u.dataValues.password,
+        is_banned:  u.dataValues.is_banned
       };
     });
     return user[0];
@@ -62,6 +70,10 @@ const userId = async (id) => {
       address: dbUser.address,
       picture: dbUser.picture,
       phone: dbUser.phone,
+      is_admin:  u.dataValues.is_admin,
+      is_admin_pro:  u.dataValues.is_admin_pro,
+      password:  u.dataValues.password,
+      is_banned:  u.dataValues.is_banned
     };
   } catch (error) {
     console.log(error);
