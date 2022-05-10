@@ -33,7 +33,11 @@ const postCarrusel = require("./Carrusel/postCarrusel");
 //end Carrusel / start MercadoPago
 const success = require("./MercadoPago/Success");
 const checkout = require("./MercadoPago/Checkout")
-// end MercadoPago / ...
+// end MercadoPago / start Reviews
+const getReviews = require('./Reviews/getReviews')
+const postReview = require('./Reviews/postReview')
+const updateReview = require('./Reviews/updateReview')
+const deleteReview = require('./Reviews/deleteReview')
 
 // start products
 router.use("/products", getProduct);
@@ -61,4 +65,6 @@ router.use("/postImgCarrusel", postCarrusel);
 // end carrusel / Start MercadoPago
 router.use("/checkout", checkout);
 router.use("/success", success);
+//end Mercado Pago / start Review
+router.use('/reviews', getReviews, postReview, updateReview, deleteReview)
 module.exports = router;
