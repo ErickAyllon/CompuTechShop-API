@@ -9,6 +9,7 @@ router.post("/", async (req, res, next) => {
     quantity,
     brand,
     description,
+    calification,
     categories,
   } = req.body;
 
@@ -20,6 +21,7 @@ router.post("/", async (req, res, next) => {
       quantity,
       brand,
       description,
+      calification,
     });
     let newProductCategory = await Category.findAll({
       where: { name: categories },

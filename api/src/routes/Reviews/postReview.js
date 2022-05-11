@@ -6,15 +6,13 @@ router.post("/", async (req, res) => {
   const {
     comment,
     userId,
-    productId,
-    calification
+    productId
   } = req.body;
   try {
     let newComment = await Reviews.create({
       comment,
       userId,
-      productId,
-      calification
+      productId
     });
     //console.log(newUser.dataValues.email);
     res.send("COMENTARIO AGREGADO");

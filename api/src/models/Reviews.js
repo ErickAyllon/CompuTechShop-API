@@ -9,9 +9,9 @@ module.exports = (sequelize) => {
       comment: {
         type: DataTypes.STRING,
       },
-      calification: {
-        type: DataTypes.STRING,
-      },
+      // calification: {
+      //   type: DataTypes.STRING,
+      // },
       userId: {
         type: DataTypes.STRING,
       },
