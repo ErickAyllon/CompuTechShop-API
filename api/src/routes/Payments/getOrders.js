@@ -3,12 +3,12 @@ const { getPayments } = require("../../Controllers/Payments");
 
 router.get("/", async (req, res) => {
   const all = await getPayments();
-  let array = [];
-  let total = all.length
-
-  while (total > 0) {
+  if(all.length !== 0){
+    let array = [];
+    let total = all.length
+ 
+   while (total > 0) {
     let order = {};
-
     let tajada = Number(all[0].idMatch); //idMatch son la cantidad de pagos q se hicieron desde el mismo carrito
    
     let arrayRespaldo = [];
@@ -36,11 +36,15 @@ router.get("/", async (req, res) => {
       order.payments.push(obj);
     }
     array.push(order);
-    if(all.length === 0) total--;
-    
-  }
-  
+    if(all.length === 0) total--;  
+  } 
   res.send(array);
+ }else{
+  res.send({msg: "Error, no hay pagos subidos a la base de datos"})
+ }
+  
+  
+ 
 });
 
 module.exports = router;
