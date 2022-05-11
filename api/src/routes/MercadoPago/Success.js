@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
         },
       }
     );
-
+  
     const infoTotal = {
       items: infoApi.data.additional_info.items.map((item) => {
         return {
@@ -44,6 +44,7 @@ router.get("/", async (req, res) => {
         let aux = {
           //ajustar esto para que conicida con el modelo
           idTogether: idTogether,
+          idMatch: infoTotal.items.length,
           name: infoTotal.items[i].name,
           picture: infoTotal.items[i].picture,
           price: infoTotal.items[i].price,
@@ -56,7 +57,7 @@ router.get("/", async (req, res) => {
           state: "En Preparacion",
           userEmail: successEmail ? successEmail : "CORREO@HARDCODEADO.com",
         };
-
+        
         const cambioCantidad = await Product.findOne({
           where: {
             name: aux.name,
@@ -88,6 +89,7 @@ router.get("/", async (req, res) => {
           html: `<h4>Hola ${user.dataValues.given_name}!</h4>
           <p>Tu compra se ha realizado con éxito!<p/>`, // html body
         });
+      
       }
       idTogether = idTogether + 1;
 
