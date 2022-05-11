@@ -16,6 +16,7 @@ const getPayments = async () => {
       return {
         id: e.id,
         idTogether: e.idTogether,
+        idMatch: e.idMatch,
         name: e.name,
         picture: e.picture,
         price: e.price,
@@ -55,6 +56,7 @@ const getPaymentsById = async (id) => {
       return {
         id: e.id,
         idTogether: e.idTogether,
+        idMatch: e.idMatch,
         name: e.name,
         picture: e.picture,
         price: e.price,
@@ -93,6 +95,7 @@ const getPaymentByUserEmail = async (userEmail) => {
       return {
         id: e.id,
         idTogether: e.idTogether,
+        idMatch: e.idMatch,
         name: e.name,
         picture: e.picture,
         price: e.price,
@@ -129,6 +132,7 @@ const getPaymentByUserName = async (userName) => {
       return {
         id: e.id,
         idTogether: e.idTogether,
+        idMatch: e.idMatch,
         name: e.name,
         picture: e.picture,
         price: e.price,
