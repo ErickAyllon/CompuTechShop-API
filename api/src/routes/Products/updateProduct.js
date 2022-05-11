@@ -12,6 +12,7 @@ router.put('/:id', async (req,res) => {
 			quantity,
 			brand,
 			description,
+			calification,
 			categories
 		} = req.body
 		const updateProduct = await Product.update(

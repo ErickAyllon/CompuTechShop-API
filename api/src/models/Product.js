@@ -28,6 +28,9 @@ module.exports = (sequelize) => {
       description: {
         type: DataTypes.TEXT,
       },
+      calification: {
+        type: DataTypes.STRING,
+      },
       comments: {
         type: DataTypes.TEXT,
       },

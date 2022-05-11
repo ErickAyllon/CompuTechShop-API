@@ -8,8 +8,7 @@ const getAllComments = async () => {
       id: c.id,
       comment: c.comment,
       user: c.userId,
-      product: c.productId,
-      calification: c.calification
+      product: c.productId
     }
   })
   return result
@@ -31,8 +30,7 @@ const getCommentByUserId = async (userId) => {
       id: c.id,
       comment: c.comment,
       user: c.userId,
-      product: c.productId,
-      calification: c.calification
+      product: c.productId
     }
   })
   return result
@@ -54,8 +52,7 @@ const getCommentByProductId = async (productId) => {
         id: c.id,
         comment: c.comment,
         user: c.userId,
-        product: c.productId,
-        calification: c.calification
+        product: c.productId
       }
     })
     return result

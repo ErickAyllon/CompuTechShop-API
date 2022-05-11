@@ -29,6 +29,7 @@ router.get("/", async (req, res) => {
           quantity: p.quantity,
           brand: p.brand,
           description: p.description,
+          calification: p.calification,
           category: p.categories.map((e) => e.name),
         };
       });
