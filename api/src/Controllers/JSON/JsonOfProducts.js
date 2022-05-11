@@ -6,7 +6,6 @@ const jsonProducts = [
     "quantity": "4",
     "brand": "Asus",
     "description": "1er teclado",
-    "calification": "8",
     "categories": "Keyboards"
 },
 {
@@ -16,7 +15,6 @@ const jsonProducts = [
     "quantity": "1",
     "brand": "Hp",
     "description": "2do teclado",
-    "calification": "5",
     "categories": "Keyboards"
 },
 {
@@ -26,7 +24,6 @@ const jsonProducts = [
     "quantity": "10",
     "brand": "Hp",
     "description": "3er teclado",
-    "calification": "10",
     "categories": "Keyboards"
 },
 {
@@ -36,7 +33,6 @@ const jsonProducts = [
     "quantity": "22",
     "brand": "Glorious",
     "description": "4to teclado",
-    "calification": "1",
     "categories": "Keyboards"
 },
 {
@@ -46,7 +42,6 @@ const jsonProducts = [
     "quantity": "5",
     "brand": "UltraWide",
     "description": "1er monitor",
-    "calification": "1",
     "categories": "Monitors"
 },
 {
@@ -56,7 +51,6 @@ const jsonProducts = [
     "quantity": "1",
     "brand": "Asus",
     "description": "2do monitor",
-    "calification": "10",
     "categories": "Monitors"
 },
 {
@@ -66,7 +60,6 @@ const jsonProducts = [
     "quantity": "22",
     "brand": "Viewsonic",
     "description": "3er monitor",
-    "calification": "7",
     "categories": "Monitors"
 },
 {
@@ -76,7 +69,6 @@ const jsonProducts = [
     "quantity": "6",
     "brand": "Lg",
     "description": "4to monitor",
-    "calification": "7",
     "categories": "Monitors"
 },
 {
@@ -86,7 +78,6 @@ const jsonProducts = [
     "quantity": "6",
     "brand": "Asus",
     "description": "1er mouse",
-    "calification": "7",
     "categories": "Mouses"
 },
 {
@@ -96,7 +87,6 @@ const jsonProducts = [
     "quantity": "1",
     "brand": "Redragon",
     "description": "2do mouse",
-    "calification": "1",
     "categories": "Mouses"
 },
 {
@@ -106,7 +96,6 @@ const jsonProducts = [
     "quantity": "4",
     "brand": "Msi",
     "description": "3er mouse",
-    "calification": "3",
     "categories": "Mouses"
 },
 {
@@ -116,7 +105,6 @@ const jsonProducts = [
     "quantity": "6",
     "brand": "Asus",
     "description": "4to mouse",
-    "calification": "8",
     "categories": "Mouses"
 },
 ]
