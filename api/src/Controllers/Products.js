@@ -23,7 +23,6 @@ const products = async () => {
           quantity: e.quantity,
           brand: e.brand,
           description: e.description,
-          calification: e.calification,
         });
         let newProductCategory = await Category.findAll({
           where: { name: e.categories },
@@ -46,7 +45,6 @@ const products = async () => {
       brand: p.brand,
       comments: p.comments,
       description: p.description,
-      calification: p.calification,
     };
   });
   return result;
@@ -80,7 +78,6 @@ const productName = async (name) => {
         brand: p.dataValues.brand,
         comments: p.comments,
         description: p.dataValues.description,
-        calification: p.dataValues.calification,
       };
     });
     // console.log(product[0]);

@@ -8,9 +8,10 @@ router.put('/:id', async (req, res) => {
     const {id} = req.params
     const {
       comment,
+      calification
     } = req.body
     const updateComment = await Reviews.update(
-      { comment },
+      { comment, calification },
       {where: {id}}
     )
     res.send(updateComment)

@@ -35,7 +35,8 @@ router.get("/", async (req, res) => {
 
     if (infoTotal) {
       /* const productos = [] */
-
+      let user;
+      let email;
       for (let i = 0; i < infoTotal.items.length; i++) {
         let actualDate = new Intl.DateTimeFormat("es-ES", {
           dateStyle: "full",
@@ -77,21 +78,23 @@ router.get("/", async (req, res) => {
             where: { name: aux.name },
           }
         );
-
-        let user = await User.findOne({
-          where: { email: aux.userEmail },
-        });
-
-        await transporter.sendMail({
-          from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
-          to: aux.userEmail, // list of receivers
-          subject: "Welcome!", // Subject line
-          html: `<h4>Hola ${user.dataValues.given_name}!</h4>
-          <p>Tu compra se ha realizado con éxito!<p/>`, // html body
-        });
+        email = aux.userEmail
       
       }
       idTogether = idTogether + 1;
+      // console.log('email', email)
+      user = await User.findOne({
+        where: { email: email },
+      });
+      //console.log('user', user)
+
+      await transporter.sendMail({
+        from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
+        to: email, // list of receivers
+        subject: "Welcome!", // Subject line
+        html: `<h4>Hola ${user.dataValues.given_name}!</h4>
+        <p>Tu compra se ha realizado con éxito!<p/>`, // html body
+      });
 
       /* await newPayment.addProduct(productos); */
       res.send({ msg: "Pagos subidos a la base de datos" });
