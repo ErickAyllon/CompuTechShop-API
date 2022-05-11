@@ -21,7 +21,6 @@ router.get("/", async (req, res) => {
             "quantity",
             "brand",
             "description",
-            "calification",
           ],
           through: {
             attributes: [],
