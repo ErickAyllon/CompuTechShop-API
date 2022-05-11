@@ -1,5 +1,6 @@
 const { Product, Category } = require("../db");
 const { Op } = require("sequelize");
+const jsonProducts = require("./JSON/JsonOfProducts");
 
 const products = async () => {
   const arrDB = await Product.findAll({
@@ -9,8 +10,31 @@ const products = async () => {
       through: {
         attributes: [],
       },
-    }
+    },
   });
+  //este try lo que hace es llenar con unos productos la base de datos, los productos estan en el archivo json
+  if (arrDB.length === 0) {
+    try {
+      jsonProducts.map(async (e) => {
+        let newProduct = await Product.create({
+          name: e.name,
+          image: e.image,
+          price: e.price,
+          quantity: e.quantity,
+          brand: e.brand,
+          description: e.description,
+          calification: e.calification,
+        });
+        let newProductCategory = await Category.findAll({
+          where: { name: e.categories },
+        });
+        newProduct.addCategory(newProductCategory);
+      });
+      console.log("Base de datos de productos completada");
+    } catch (error) {
+      console.log("ERROR EN PRODUCTS");
+    }
+  }
   const result = await arrDB.map((p) => {
     return {
       id: p.id,
@@ -27,7 +51,6 @@ const products = async () => {
   });
   return result;
 };
-
 const productName = async (name) => {
   try {
     console.log(name);
@@ -66,5 +89,6 @@ const productName = async (name) => {
     console.log(error);
   }
 };
+
 
 module.exports = { products, productName };

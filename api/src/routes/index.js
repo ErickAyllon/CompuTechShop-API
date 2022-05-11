@@ -1,5 +1,7 @@
 const router = require("express").Router();
+
 // start products
+
 const postProduct = require("./Products/postProduct");
 const updateProduct = require("./Products/updateProduct.js");
 const deleteProduct = require("./Products/deleteProduct");
@@ -21,14 +23,21 @@ const productCategory = require("../Filters/getProductCategory.js");
 /* const { validatorProduct } = require("../Validators/ValidatorProduct");
 const { validatorUser } = require("../Validators/ValidatorUser");
 const { validatorCategory } = require("../Validators/ValidatorCategory"); */
-// end validaciones / start shops
-const postShop = require("./Shops/postShop");
-const getShops = require("./Shops/getShops");
-const getShopByUserId = require("./Shops/getShopByUserId");
-const updateShop = require("./Shops/updateShop")
-// end shops / start carrusel
+//end validaciones / start payments
+const getPayments = require("./Payments/getPayment");
+const getOrders = require("./Payments/getOrders")
+const updatePayment = require("./Payments/updatePayment");
+const getAmountPaymentsUserEmail = require("./Payments/getAmountPaymentsUserEmail")
+// end Payments / start carrusel
 const postCarrusel = require("./Carrusel/postCarrusel");
-
+//end Carrusel / start MercadoPago
+const success = require("./MercadoPago/Success");
+const checkout = require("./MercadoPago/Checkout")
+// end MercadoPago / start Reviews
+const getReviews = require('./Reviews/getReviews')
+const postReview = require('./Reviews/postReview')
+const updateReview = require('./Reviews/updateReview')
+const deleteReview = require('./Reviews/deleteReview')
 
 // start products
 router.use("/products", getProduct);
@@ -47,11 +56,16 @@ router.use("/deleteCategory", deleteCategory);
 // end categories / start filtros
 router.use("/productBrand", getProductBrand);
 router.use("/productCategory", productCategory);
-// end filtros / start shop
-router.use("/postShop", postShop);
-router.use("/getShops", getShops, getShopByUserId);
-router.use("/updateShop", updateShop);
-// end shops / start carrusel
+// end filtros / start Payment
+router.use("/getPayments", getPayments);
+router.use("/getOrders", getOrders)
+router.use("/updatePayment", updatePayment);
+router.use("/getPaymentAcount", getAmountPaymentsUserEmail)
+// end Payments / start carrusel
 router.use("/postImgCarrusel", postCarrusel);
-// end carrusel / ....
+// end carrusel / Start MercadoPago
+router.use("/checkout", checkout);
+router.use("/success", success);
+//end Mercado Pago / start Review
+router.use('/reviews', getReviews, postReview, updateReview, deleteReview)
 module.exports = router;
