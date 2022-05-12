@@ -64,6 +64,8 @@ const getCommentByProductId = async (productId) => {
 
 const getCommentByProductName = async (productName) => {
   try {
+    const userReview = await User.findAll()
+    //console.log(userReview.dataValues)
     const product = await Product.findOne({
       where: {
         name: productName
@@ -75,11 +77,14 @@ const getCommentByProductName = async (productName) => {
         productId: product.dataValues.id
       }
     })
+
     const result = await commentsDB.map(c => {
+      userReview.filter(u => u.dataValues.id === c.userId)
+      const userName = userReview[0].given_name + ' ' + userReview[0].family_name  
       return {
         id: c.id,
         comment: c.comment,
-        user: c.userId,
+        user: userName,
         product: c.productId
       }
     })
