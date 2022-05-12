@@ -62,4 +62,32 @@ const getCommentByProductId = async (productId) => {
   }
 }
 
-module.exports = { getAllComments, getCommentByUserId, getCommentByProductId };
+const getCommentByProductName = async (productName) => {
+  try {
+    const product = await Product.findOne({
+      where: {
+        name: productName
+      }
+    })
+    //console.log(product)
+    const commentsDB = await Reviews.findAll({
+      where: {
+        productId: product.dataValues.id
+      }
+    })
+    const result = await commentsDB.map(c => {
+      return {
+        id: c.id,
+        comment: c.comment,
+        user: c.userId,
+        product: c.productId
+      }
+    })
+    return result
+  }
+  catch(err) {
+    console.log(err)
+  }
+}
+
+module.exports = { getAllComments, getCommentByUserId, getCommentByProductId, getCommentByProductName };
