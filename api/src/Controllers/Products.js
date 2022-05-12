@@ -53,7 +53,7 @@ const products = async () => {
 };
 const productName = async (name) => {
   try {
-    console.log(name);
+    //console.log(name);
     const nameDB = await Product.findAll({
       where: {
         name: { [Op.iLike]: `%${name}%` },
