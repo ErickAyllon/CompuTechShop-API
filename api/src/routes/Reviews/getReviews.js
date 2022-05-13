@@ -1,17 +1,22 @@
 const router = require("express").Router();
 
-const { getAllComments, getCommentByUserId, getCommentByProductId }  = require('../../Controllers/Reviews');
+const { getAllComments, getCommentByUserId, getCommentByProductId, getCommentByProductName }  = require('../../Controllers/Reviews');
 
 
 router.get('/', async (req,res) => {
   const {userId} = req.query
   const {productId} = req.query
+  const {productName} = req.query
 	try {
-    if(userId){
+    if(productName){
+      const product = await getCommentByProductName(productName)
+      res.send(product)
+    }
+    else if(userId){
       const product = await getCommentByUserId(userId)
       res.send(product)
     }
-    if(productId){
+    else if(productId){
       const product = await getCommentByProductId(productId)
       res.send(product)
     }

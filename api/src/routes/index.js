@@ -38,6 +38,10 @@ const getReviews = require('./Reviews/getReviews')
 const postReview = require('./Reviews/postReview')
 const updateReview = require('./Reviews/updateReview')
 const deleteReview = require('./Reviews/deleteReview')
+//end Review / start Wishlist
+const postWishlist = require('./Wishlist/postWishlist')
+const getWishlist = require('./Wishlist/getWishlist')
+const deleteWishlist = require('./Wishlist/deleteWishlist')
 
 // start products
 router.use("/products", getProduct);
@@ -68,4 +72,9 @@ router.use("/checkout", checkout);
 router.use("/success", success);
 //end Mercado Pago / start Review
 router.use('/reviews', getReviews, postReview, updateReview, deleteReview)
+//end Review / start Wishlist
+router.use('/wishlist', postWishlist, getWishlist, deleteWishlist)
+
+
+
 module.exports = router;
