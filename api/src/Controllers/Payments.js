@@ -16,6 +16,7 @@ const getPayments = async () => {
       return {
         id: e.id,
         idTogether: e.idTogether,
+        idMatch: e.idMatch,
         name: e.name,
         picture: e.picture,
         price: e.price,
@@ -40,7 +41,7 @@ const getPaymentsById = async (id) => {
   try {
     const arrDB = await Payment.findAll({
       where: {
-        id
+        id,
       },
       include: {
         model: Product,
@@ -55,6 +56,7 @@ const getPaymentsById = async (id) => {
       return {
         id: e.id,
         idTogether: e.idTogether,
+        idMatch: e.idMatch,
         name: e.name,
         picture: e.picture,
         price: e.price,
@@ -68,7 +70,7 @@ const getPaymentsById = async (id) => {
         products: e.products.map((p) => p.name),
       };
     });
-    
+
     return result;
   } catch (error) {
     console.log(error);
@@ -93,6 +95,44 @@ const getPaymentByUserEmail = async (userEmail) => {
       return {
         id: e.id,
         idTogether: e.idTogether,
+        idMatch: e.idMatch,
+        name: e.name,
+        picture: e.picture,
+        price: e.price,
+        date: e.date,
+        quantity: e.quantity,
+        total_paid_amount: e.total_paid_amount,
+        status: e.status,
+        status_detail: e.status_detail,
+        state: e.state,
+        userEmail: e.userEmail,
+        products: e.products.map((p) => p.name),
+      };
+    });
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const getPaymentByUserName = async (userName) => {
+  try {
+    const userPayment = await Payment.findAll({
+      where: {
+        name: userName,
+      },
+      include: {
+        model: Product,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+    const result = await userPayment.map((e) => {
+      return {
+        id: e.id,
+        idTogether: e.idTogether,
+        idMatch: e.idMatch,
         name: e.name,
         picture: e.picture,
         price: e.price,
@@ -112,6 +152,9 @@ const getPaymentByUserEmail = async (userEmail) => {
   }
 };
 
-
-module.exports = { getPayments, getPaymentsById, getPaymentByUserEmail };
-
+module.exports = {
+  getPayments,
+  getPaymentsById,
+  getPaymentByUserEmail,
+  getPaymentByUserName,
+};

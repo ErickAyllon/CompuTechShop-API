@@ -1,14 +1,21 @@
 const router = require("express").Router();
 const { Payment } = require("../../db");
-const {getPaymentsById,getPayments} = require('../../Controllers/Payments')
+const {getPaymentsById,getPayments, getPaymentByUserEmail} = require('../../Controllers/Payments');
+const { userEmail } = require("../../Controllers/Users");
 
 router.get("/", async (req, res) => {
-  const {id} = req.query
+  const {id,email} = req.query
+ 
   try {
     if(id){
       const payments = await getPaymentsById(id)
       res.send(payments);
-    } else {
+    } 
+    if(email){
+      const payments = await getPaymentByUserEmail(email)
+      res.send(payments);
+    }
+    else {
       const payments = await getPayments()
       res.send(payments);
     }

@@ -35,6 +35,8 @@ router.post("/", async (req, res) => {
       is_banned
     });
     //console.log(newUser.dataValues.email);
+    res.send("USUARIO AGREGADO");
+    // HIJOS DE $#"$, si ponen el await trasporter ese antes que el res.send se demora 2 segundos en postear un usuario
     await transporter.sendMail({
       from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
       to: newUser.dataValues.email, // list of receivers
@@ -42,7 +44,7 @@ router.post("/", async (req, res) => {
       html: `<h4>Hola ${newUser.dataValues.given_name}!</h4>
     		<p>Bienvenido a CompuTech Shop!<p/>`, // html body
     });
-    res.send("USUARIO AGREGADO");
+    
   } catch (error) {
     console.log(error, "rutaPost");
   }

@@ -1,26 +1,37 @@
-const { User, Product } = require("../db");
+const { User } = require("../db");
+const { getPaymentByUserEmail } = require("../Controllers/Payments");
 
 const users = async () => {
   const arrDB = await User.findAll();
-  console.log(arrDB);
-  const result = await arrDB.map((u) => {
-    return {
-      id: u.id,
-      given_name: u.given_name,
-      family_name: u.family_name,
-      nickname: u.nickname,
-      email: u.email,
-      email_verified: u.email_verified,
-      birthday: u.birthday,
-      address: u.address,
-      picture: u.picture,
-      phone: u.phone,
-      is_admin:  u.dataValues.is_admin,
-      is_admin_pro:  u.dataValues.is_admin_pro,
-      password:  u.dataValues.password,
-      is_banned:  u.dataValues.is_banned
-    };
-  });
+  const result = [];
+  for (let i = 0; i < arrDB.length; i++) {
+    const userPayment = await getPaymentByUserEmail(arrDB[i].email);
+   
+   let totalAmount = 0;
+   if (userPayment.length !== 0) {
+     let totalAmountEmail = userPayment.reduce((acc, element) => {
+       return element.total_paid_amount + acc;
+     },0);
+     totalAmount += totalAmountEmail;};
+     
+     result.push({
+      id: arrDB[i].id,
+      given_name: arrDB[i].given_name,
+      family_name: arrDB[i].family_name,
+      nickname: arrDB[i].nickname,
+      email: arrDB[i].email,
+      email_verified: arrDB[i].email_verified,
+      birthday: arrDB[i].birthday,
+      address: arrDB[i].address,
+      picture: arrDB[i].picture,
+      phone: arrDB[i].phone,
+      is_admin: arrDB[i].dataValues.is_admin,
+      is_admin_pro: arrDB[i].dataValues.is_admin_pro,
+      password: arrDB[i].dataValues.password,
+      is_banned: arrDB[i].dataValues.is_banned,
+      totalAmount: totalAmount
+    });
+  }
   return result;
 };
 
@@ -44,10 +55,10 @@ const userName = async (given_name) => {
         address: u.dataValues.address,
         picture: u.dataValues.picture,
         phone: u.dataValues.phone,
-        is_admin:  u.dataValues.is_admin,
-        is_admin_pro:  u.dataValues.is_admin_pro,
-        password:  u.dataValues.password,
-        is_banned:  u.dataValues.is_banned
+        is_admin: u.dataValues.is_admin,
+        is_admin_pro: u.dataValues.is_admin_pro,
+        password: u.dataValues.password,
+        is_banned: u.dataValues.is_banned,
       };
     });
     return user[0];
@@ -70,10 +81,10 @@ const userId = async (id) => {
       address: dbUser.address,
       picture: dbUser.picture,
       phone: dbUser.phone,
-      is_admin:  u.dataValues.is_admin,
-      is_admin_pro:  u.dataValues.is_admin_pro,
-      password:  u.dataValues.password,
-      is_banned:  u.dataValues.is_banned
+      is_admin: u.dataValues.is_admin,
+      is_admin_pro: u.dataValues.is_admin_pro,
+      password: u.dataValues.password,
+      is_banned: u.dataValues.is_banned,
     };
   } catch (error) {
     console.log(error);
@@ -94,12 +105,14 @@ const userEmail = async (email) => {
       address: dbUser.address,
       picture: dbUser.picture,
       phone: dbUser.phone,
+      is_admin: dbUser.is_admin,
+      is_admin_pro: dbUser.is_admin_pro,
+      password: dbUser.password,
+      is_banned: dbUser.is_banned,
     };
   } catch (error) {
     console.log(error);
   }
 };
 
-
 module.exports = { users, userName, userId, userEmail };
-

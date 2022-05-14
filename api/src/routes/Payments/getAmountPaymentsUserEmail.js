@@ -5,8 +5,10 @@ router.get('/:userEmail', async (req,res) => {
   const {userEmail} = req.params
 	try {
       const userPayment = await getPaymentByUserEmail(userEmail)
-      if(userPayment.length===0)res.send(404, {msg: "Ningun pago coincide con el correo"})
-      let totalAmount={email: userEmail,totalAmount:userPayment.reduce((acc, element) =>{
+
+      if(userPayment.length===0){res.send({email: userEmail,totalAmount:0})}
+
+      let totalAmount={email: userEmail,totalAmount: userPayment.reduce((acc, element) =>{
        return element.total_paid_amount + acc
       },0) }
       

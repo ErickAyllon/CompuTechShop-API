@@ -8,8 +8,11 @@ module.exports = (sequelize) => {
     {
       idTogether:{
         type: DataTypes.FLOAT,
-      }
-      ,name: {
+      },
+      idMatch: {
+        type: DataTypes.STRING,
+      },
+      name: {
         type: DataTypes.STRING,
       },
       picture: {
