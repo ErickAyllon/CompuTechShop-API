@@ -211,19 +211,6 @@ const jsonProducts = [
           "calification": "0"
         },
         {
-          "name": "Notebook Noblex 14.1\" Pantalla HD Intel Celeron 4GB/128GB SSD",
-          "image": "https://http2.mlstatic.com/D_NQ_NP_997940-MLA47767920611_102021-V.webp",
-          "price": "51999",
-          "quantity": "4",
-          "categories": [
-            "Laptops"
-          ],
-          "brand": "Noblex",
-          "comments": null,
-          "description": "La notebook Noblex N14WCE128 es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina.\n\nPantalla con gran impacto visual\nSu pantalla de 14.1\" y 1366x768 px de resolución te brindará colores más vivos y definidos. Tus películas y series preferidas cobrarán vida, ya que ganarán calidad y definición en cada detalle.\n\nEficiencia a tu alcance\nCon su procesador Intel Celeron de 2 núcleos, lograrás el desempeño que necesitás para navegar y trabajar. Podrás usar los programas más esenciales, llevar a cabo tus tareas y organizar tu vida diaria.\n\nUn procesador exclusivo para los gráficos\nSu placa de video Intel HD Graphics 500 convierte a este dispositivo en una gran herramienta de trabajo para cualquier profesional del diseño. Te permitirá lograr una gran performance en todos tus juegos y en otras tareas cotidianas que impliquen procesamiento gráfico.\n\nDurabilidad y ahorro\nCon su batería de ion de litio la computadora obtendrá una mayor vida útil. En comparación con las tradicionales, esta es ligera, se carga más rápido y dura más",
-          "calification": "0"
-        },
-        {
           "name": "Notebook Asus X515EA slate gray 15.6\", Intel Core i5 1135G7 8GB de RAM 256GB SSD, Intel Iris Xe Graphics G7 80EUs 1920x1080px ",
           "image": "https://http2.mlstatic.com/D_NQ_NP_908593-MLA49420869607_032022-V.webp",
           "price": "107999",
