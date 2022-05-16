@@ -41,8 +41,13 @@ router.post("/", async (req, res) => {
       from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
       to: newUser.dataValues.email, // list of receivers
       subject: "Welcome!", // Subject line
-      html: `<h4>Hola ${newUser.dataValues.given_name}!</h4>
-    		<p>Bienvenido a CompuTech Shop!<p/>`, // html body
+      html: `<h4>Hi ${newUser.dataValues.given_name}!</h4>
+    		<p>Welcome to CompuTech Shop!
+        It is a pleasure for us to have you here.</br>
+        </br>
+        Sending you the best!</br>
+        CompuTechShop Team.
+        <p/>`, // html body
     });
     
   } catch (error) {
