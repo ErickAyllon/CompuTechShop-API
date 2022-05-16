@@ -2,42 +2,42 @@ const { User, Product, Reviews } = require("../db");
 
 const getAllComments = async () => {
   try {
-  const commentsDB = await Reviews.findAll()
-  const result = await commentsDB.map(c => {
-    return {
-      id: c.id,
-      comment: c.comment,
-      user: c.userId,
-      product: c.productId,
-      calification: c.calification
-    }
-  })
-  return result
+    const commentsDB = await Reviews.findAll()
+    const result = await commentsDB.map(c => {
+      return {
+        id: c.id,
+        comment: c.comment,
+        user: c.userId,
+        product: c.productId,
+        calification: c.calification
+      }
+    })
+    return result
   }
-  catch(err) {
+  catch (err) {
     console.log(err)
   }
 }
 
 const getCommentByUserId = async (userId) => {
   try {
-  const commentsDB = await Reviews.findAll({
-    where: {
-      userId
-    }
-  })
-  const result = await commentsDB.map(c => {
-    return {
-      id: c.id,
-      comment: c.comment,
-      user: c.userId,
-      product: c.productId,
-      calification: c.calification
-    }
-  })
-  return result
+    const commentsDB = await Reviews.findAll({
+      where: {
+        userId
+      }
+    })
+    const result = await commentsDB.map(c => {
+      return {
+        id: c.id,
+        comment: c.comment,
+        user: c.userId,
+        product: c.productId,
+        calification: c.calification
+      }
+    })
+    return result
   }
-  catch(err) {
+  catch (err) {
     console.log(err)
   }
 }
@@ -60,7 +60,7 @@ const getCommentByProductId = async (productId) => {
     })
     return result
   }
-  catch(err) {
+  catch (err) {
     console.log(err)
   }
 }
@@ -82,8 +82,8 @@ const getCommentByProductName = async (productName) => {
     })
 
     const result = await commentsDB.map(c => {
-      userReview.filter(u => u.dataValues.id === c.userId)
-      const userName = userReview[0].given_name + ' ' + userReview[0].family_name  
+      const userFiltered = userReview.filter(u => u.dataValues.id === c.userId)
+      const userName = userFiltered[0].given_name + ' ' + userFiltered[0].family_name
       return {
         id: c.id,
         comment: c.comment,
@@ -94,7 +94,7 @@ const getCommentByProductName = async (productName) => {
     })
     return result
   }
-  catch(err) {
+  catch (err) {
     console.log(err)
   }
 }

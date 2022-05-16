@@ -11,9 +11,9 @@ router.post("/", (req, res) => {
   let preference = {
     items: [],
     back_urls: {
-      success: "http://localhost:3000/purchaseResult",
-      failure: "http://localhost:3000/purchaseResult",
-      pending: "http://localhost:3000/purchaseResult",
+      success: "https://computechshop.vercel.app/purchaseResult",
+      failure: "https://computechshop.vercel.app/purchaseResult",
+      pending: "https://computechshop.vercel.app/purchaseResult",
       // Rutas del front a las que quiero redireccionar, tienen que mostrar los productos vendidos, una vez que la pagina cargue, tiene que hacer un efect
     },
     auto_return: "approved",
