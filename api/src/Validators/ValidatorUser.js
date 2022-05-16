@@ -6,15 +6,13 @@ const { validateResult } = require("../helpers/helperValidator");
 };
 
 const validatorUser = [
-  check("name")
+  check("given_name")
     .exists()
     .custom((value, { req }) => {
-      if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ]+$/.test(value))
-        throw new Error("Invalid name caracters");
       if (value.length < 1) throw new Error("the name entered is too short");
       return true;
     }),
-  check("lastName")
+  check("family_name")
     .exists()
     .custom((value, { req }) => {
       if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ]+$/.test(value))
@@ -29,21 +27,17 @@ const validatorUser = [
         throw new Error("the nickName entered is too short");
       return true;
     }),
-  check("email"),
-  check("password"), //todo: Validacion de contraseña
-  check("email_verified"),
-  check("age")
-    .exists()
-    .custom((value, { res }) => {
-      value = Number(value);
-      if (value < 18) throw new Error("Not legal age");
-      if (value > 100) throw new Error("Too old");
-      return true;
-    }),
-  check("address"),
-  check("image"),
-  check("phone"), //todo: validaciones que tiene que tener un telefono celular
-
+  check("email").exists(),
+  check("email_verified").exists(),
+  check("birthday").exists(),
+  check("address").exists(),
+  check("picture").exists(),
+  check("phone").exists(), //todo: validaciones que tiene que tener un telefono celular
+  check("is_admin").exists(),
+  check("is_admin_pro").exists(),
+  check("password").exists(), //todo: Validacion de contraseña
+  check("is_banned").exists(), 
+ 
   (req, res, next) => {
     validateResult(req, res, next);
   },

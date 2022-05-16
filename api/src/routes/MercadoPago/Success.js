@@ -37,6 +37,7 @@ router.get("/", async (req, res) => {
       /* const productos = [] */
       let user;
       let email;
+      let id;
       for (let i = 0; i < infoTotal.items.length; i++) {
         let actualDate = new Intl.DateTimeFormat("es-ES", {
           dateStyle: "full",
@@ -79,6 +80,7 @@ router.get("/", async (req, res) => {
           }
         );
         email = aux.userEmail
+        id = aux.idTogether
       
       }
       idTogether = idTogether + 1;
@@ -90,10 +92,16 @@ router.get("/", async (req, res) => {
 
       await transporter.sendMail({
         from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
-        to: email, // list of receivers
-        subject: "Welcome!", // Subject line
-        html: `<h4>Hola ${user.dataValues.given_name}!</h4>
-        <p>Tu compra se ha realizado con éxito!<p/>`, // html body
+        to: user.dataValues.email, // list of receivers
+        subject: "Thanks for your order!", // Subject line
+        html: `<h4>Hi ${user.dataValues.given_name}!</h4>
+        <p>Thank you for buying in CompuTechShop! We hope everything went well. Your order number: #${id} will be shipped to your profile's address in the next 2-5 working days. 
+        If you need to change your address please go to your profile, click on “edit user” button, write the new address and click on the “update user” button.
+        </br>
+        </br>
+        Sending you the best!</br>
+        CompuTechShop Team.
+        <p/>`, // html body
       });
 
       /* await newPayment.addProduct(productos); */

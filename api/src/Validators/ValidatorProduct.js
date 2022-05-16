@@ -32,25 +32,18 @@ const validatorProduct = [
   check("brand")
     .exists()
     .custom((value, { req }) => {
-      if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ]+$/.test(value))
-        throw new Error("Invalid brand caracters");
       if (value.length < 1) throw new Error("the brand entered is too short");
       return true;
     }),
   check("description")
-    .exists()
-    .custom((value, { req }) => {
-      if (value.length === 0)
-        throw new Error("The description cannot be empty");
-      return true;
-    }),
+    .exists(),
   check("calification")
     .exists()
     .custom((value, { req }) => {
       if (isNaN(value)) throw new Error("calification must be a number");
       if (value < 0) throw new Error("calification must be a positive number");
-      if (value < 0 || value > 10)
-        throw new Error("calification must be a number between 0 to 10");
+      if (value < 0 || value > 5)
+        throw new Error("calification must be a number between 0 to 5");
       return true;
     }),
   check("categories")
