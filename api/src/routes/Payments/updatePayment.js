@@ -26,9 +26,14 @@ router.put("/:id", async (req, res) => {
     await transporter.sendMail({
       from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
       to: newPay.userEmail, // list of receivers
-      subject: "Welcome!", // Subject line
-      html: `<h4>Hola ${user.given_name}!</h4>
-        <p>Se ha actualizado tu compra, en este momento, su estado es "${newPay.state}"<p/>`, // html body
+      subject: "Order status", // Subject line
+      html: `<h4>Hi ${user.given_name}!</h4>
+        <p>The status of your purchase has been updated to "${newPay.state}". For more information, you can view the details in your profile
+        </br>
+        </br>
+        Sending you the best!</br>
+        CompuTechShop Team.
+        <p/>`, // html body
     });
     res.send({ msg: "Actualizado" });
   } catch (err) {
