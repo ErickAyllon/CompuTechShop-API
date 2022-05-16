@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const { Payment } = require("../../db");
+
 const {getPaymentsById,getPayments, getPaymentByUserEmail} = require('../../Controllers/Payments');
-const { userEmail } = require("../../Controllers/Users");
+
 
 router.get("/", async (req, res) => {
   const {id,email} = req.query
