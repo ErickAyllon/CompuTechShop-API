@@ -7,7 +7,7 @@ module.exports = (sequelize) => {
     "reviews",
     {
       comment: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
       calification: {
         type: DataTypes.STRING,

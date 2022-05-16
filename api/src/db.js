@@ -3,6 +3,7 @@ const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 
+<<<<<<< HEAD
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(`postgres://postgres:guachin123@localhost/techshop`, {
@@ -10,6 +11,41 @@ const sequelize = new Sequelize(`postgres://postgres:guachin123@localhost/techsh
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   }
 );
+=======
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
+let sequelize =
+  process.env.NODE_ENV === "production"
+    ? new Sequelize({
+        database: DB_NAME,
+        dialect: "postgres",
+        host: DB_HOST,
+        port: 5432,
+        username: DB_USER,
+        password: DB_PASSWORD,
+        pool: {
+          max: 3,
+          min: 1,
+          idle: 10000,
+        },
+        dialectOptions: {
+          ssl: {
+            require: true,
+            // Ref.: https://github.com/brianc/node-postgres/issues/2009
+            rejectUnauthorized: false,
+          },
+          keepAlive: true,
+        },
+        ssl: true,
+      })
+    : new Sequelize(`postgres://postgres:1234@localhost/techshop`, {
+        logging: false,
+        native: false,
+      });
+// const sequelize = new Sequelize(`postgres://postgres:1234@localhost/techshop`, {
+//   logging: false, // set to console.log to see the raw SQL queries
+//   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+// });
+>>>>>>> 331bc075557e4df28ad0846b60e67c18833c3c45
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
