@@ -92,7 +92,7 @@ router.get("/", async (req, res) => {
 
       await transporter.sendMail({
         from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
-        to: email, // list of receivers
+        to: user.dataValues.email, // list of receivers
         subject: "Thanks for your order!", // Subject line
         html: `<h4>Hi ${user.dataValues.given_name}!</h4>
         <p>Thank you for buying in CompuTechShop! We hope everything went well. Your order number: #${id} will be shipped to your profile's address in the next 2-5 working days. 
