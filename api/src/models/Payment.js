@@ -42,7 +42,14 @@ module.exports = (sequelize) => {
       userEmail: {
         type: DataTypes.STRING,
       },
+      extraEmail:{
+        type: DataTypes.STRING,
+      },
+      extraAddress:{
+        type: DataTypes.STRING,
+      }
     },
+    
 
     {
       timestamps: false /* le saca el createAt y Updateat*/,

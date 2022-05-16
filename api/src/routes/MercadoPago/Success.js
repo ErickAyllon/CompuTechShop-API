@@ -9,7 +9,7 @@ let idTogether = 0;
 
 router.get("/", async (req, res) => {
   try {
-    const { id, successEmail } = req.query;
+    const { id, successEmail, emailExtra, addressExtra } = req.query;
     const infoApi = await axios.get(
       "https://api.mercadopago.com/v1/payments/" + id,
       {
@@ -58,6 +58,11 @@ router.get("/", async (req, res) => {
           status_detail: infoTotal.status_detail,
           state: "In process",
           userEmail: successEmail ? successEmail : "CORREO@HARDCODEADO.com",
+          /* 
+        
+          extraEmail: emailExtra ? emailExtra : null
+          extraAddress: emailAddress ? emailAddress : null
+          */
         };
         
         const cambioCantidad = await Product.findOne({
