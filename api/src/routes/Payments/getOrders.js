@@ -32,6 +32,8 @@ router.get("/", async (req, res) => {
       obj.status_detail = arrayRespaldo[x].status_detail;
       obj.state = arrayRespaldo[x].state;
       obj.userEmail = arrayRespaldo[x].userEmail;
+      obj.extraEmail= arrayRespaldo[x].extraEmail,
+      obj.extraAddress= arrayRespaldo[x].extraAddress
       //
       order.payments.push(obj);
     }
