@@ -51,7 +51,7 @@ router.get("/", async (req, res) => {
     if (infoTotal) {
       /* const productos = [] */
       let user;
-      let email;
+      let email = []
       let id;
       for (let i = 0; i < infoTotal.items.length; i++) {
         let actualDate = new Intl.DateTimeFormat("es-ES", {
@@ -96,11 +96,13 @@ router.get("/", async (req, res) => {
             where: { name: aux.name },
           }
         );
-        email = aux.userEmail;
+        email.push(aux.userEmail);
+        aux.extraEmail ? email.push(aux.extraEmail) : null
         id = aux.idTogether;
       }
       idTogether = idTogether + 1;
-      // console.log('email', email)
+      email = [...new Set (email)]
+      //console.log('email', email)
       user = await User.findOne({
         where: { email: email },
       });
@@ -108,9 +110,10 @@ router.get("/", async (req, res) => {
       
       res.send({ msg: "Pagos subidos a la base de datos" });
       
-      await transporter.sendMail({
+      email.map(el => {
+        transporter.sendMail({
         from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
-        to: user.dataValues.email, // list of receivers
+        to: el, // list of receivers
         subject: "Thanks for your order!", // Subject line
         html: `<h4>Hi ${user.dataValues.given_name}!</h4>
         <p>Thank you for buying in CompuTechShop! We hope everything went well. Your order number: #${id} will be shipped to your profile's address in the next 2-5 working days. 
@@ -121,6 +124,20 @@ router.get("/", async (req, res) => {
         CompuTechShop Team.
         <p/>`, // html body
       });
+      })
+      // await transporter.sendMail({
+      //   from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
+      //   to: user.dataValues.email, // list of receivers
+      //   subject: "Thanks for your order!", // Subject line
+      //   html: `<h4>Hi ${user.dataValues.given_name}!</h4>
+      //   <p>Thank you for buying in CompuTechShop! We hope everything went well. Your order number: #${id} will be shipped to your profile's address in the next 2-5 working days. 
+      //   If you need to change your address please go to your profile, click on “edit user” button, write the new address and click on the “update user” button.
+      //   </br>
+      //   </br>
+      //   Sending you the best!</br>
+      //   CompuTechShop Team.
+      //   <p/>`, // html body
+      // });
       
       /* await newPayment.addProduct(productos); */
       
