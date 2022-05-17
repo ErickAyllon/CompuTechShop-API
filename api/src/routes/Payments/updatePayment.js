@@ -27,7 +27,7 @@ router.put("/:id", async (req, res) => {
 
     res.send({ msg: "Actualizado" });
 
-    mails.map(el => {
+    mails.map(el => { el ?
       transporter.sendMail({
       from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
       to: el, // list of receivers
@@ -39,7 +39,7 @@ router.put("/:id", async (req, res) => {
       Sending you the best!</br>
       CompuTechShop Team.
       <p/>`, // html body
-    });
+    }) : null
     })
     // await transporter.sendMail({
     //   from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
