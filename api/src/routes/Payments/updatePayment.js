@@ -26,7 +26,7 @@ router.put("/:id", async (req, res) => {
     mails = [newPay.dataValues.userEmail, newPay.dataValues.extraEmail]
 
     res.send({ msg: "Actualizado" });
-
+    mails = [...new Set(mails)]
     mails.map(el => { el ?
       transporter.sendMail({
       from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
