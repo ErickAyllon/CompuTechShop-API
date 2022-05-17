@@ -2,14 +2,29 @@ const router = require("express").Router();
 const { Product, Payment, User } = require("../../db");
 const { transporter } = require("../../Mails/index");
 const axios = require("axios");
-
+const { getPayments } = require("../../Controllers/Payments");
 require("dotenv").config();
-
-let idTogether = 0;
 
 router.get("/", async (req, res) => {
   try {
-    const { id, successEmail } = req.query;
+    const payments = await getPayments()
+    let num ;
+    if(payments.length > 0){payments.sort((a,b) =>{
+      if (a.idTogether < b.idTogether) {
+        return 1;
+    }
+    if (a.idTogether > b.idTogether) {
+        return -1;
+    }
+    return 0;
+    })
+    num = payments[0].idTogether;
+  }
+
+    
+    let idTogether = num ? num + 1 : 1 ;
+
+    const { id, successEmail, extraEmail, extraAddress } = req.query;
     const infoApi = await axios.get(
       "https://api.mercadopago.com/v1/payments/" + id,
       {
@@ -18,7 +33,7 @@ router.get("/", async (req, res) => {
         },
       }
     );
-  
+
     const infoTotal = {
       items: infoApi.data.additional_info.items.map((item) => {
         return {
@@ -58,8 +73,10 @@ router.get("/", async (req, res) => {
           status_detail: infoTotal.status_detail,
           state: "In process",
           userEmail: successEmail ? successEmail : "CORREO@HARDCODEADO.com",
+          extraEmail: extraEmail ? extraEmail : null,
+          extraAddress: extraAddress ? extraAddress : null,
         };
-        
+
         const cambioCantidad = await Product.findOne({
           where: {
             name: aux.name,
@@ -79,9 +96,8 @@ router.get("/", async (req, res) => {
             where: { name: aux.name },
           }
         );
-        email = aux.userEmail
-        id = aux.idTogether
-      
+        email = aux.userEmail;
+        id = aux.idTogether;
       }
       idTogether = idTogether + 1;
       // console.log('email', email)
@@ -89,7 +105,9 @@ router.get("/", async (req, res) => {
         where: { email: email },
       });
       //console.log('user', user)
-
+      
+      res.send({ msg: "Pagos subidos a la base de datos" });
+      
       await transporter.sendMail({
         from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
         to: user.dataValues.email, // list of receivers
@@ -103,9 +121,9 @@ router.get("/", async (req, res) => {
         CompuTechShop Team.
         <p/>`, // html body
       });
-
+      
       /* await newPayment.addProduct(productos); */
-      res.send({ msg: "Pagos subidos a la base de datos" });
+      
     }
   } catch (error) {
     console.log("ERROR EN SUCCESS", error);

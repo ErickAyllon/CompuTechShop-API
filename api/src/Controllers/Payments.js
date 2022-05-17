@@ -28,6 +28,8 @@ const getPayments = async () => {
         state: e.state,
         userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
+        extraEmail: e.extraEmail,
+        extraAddress: e.extraAddress
       };
     });
     //console.log("result", result);
@@ -68,6 +70,8 @@ const getPaymentsById = async (id) => {
         state: e.state,
         userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
+        extraEmail: e.extraEmail,
+        extraAddress: e.extraAddress
       };
     });
 
@@ -107,6 +111,8 @@ const getPaymentByUserEmail = async (userEmail) => {
         state: e.state,
         userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
+        extraEmail: e.extraEmail,
+        extraAddress: e.extraAddress
       };
     });
     return result;
@@ -144,6 +150,8 @@ const getPaymentByUserName = async (userName) => {
         state: e.state,
         userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
+        extraEmail: e.extraEmail,
+        extraAddress: e.extraAddress
       };
     });
     return result;
