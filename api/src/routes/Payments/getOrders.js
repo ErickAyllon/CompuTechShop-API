@@ -1,14 +1,21 @@
 const router = require("express").Router();
-const { getOrders } = require("../../Controllers/Payments");
+const { getOrders,getOrdersEmail } = require("../../Controllers/Payments");
 
-router.get("/", async (req, res) => {
-  const order = await getOrders();
 
-  if (order !== 0) {
-    res.send(order);
-  } else {
-    res.send({ msg: "Error, no hay pagos subidos a la base de datos" });
-  }
-});
-
+router.get('/', async (req,res) => {
+  const {userEmail} = req.query
+	try {
+    if(userEmail){
+      const order = await getOrdersEmail(userEmail)
+      res.send(order)
+    }
+    else{
+      const orders = await getOrders()
+      res.send(orders)
+    }
+	}
+	catch(err){
+		console.log(err)
+	}
+})
 module.exports = router;
