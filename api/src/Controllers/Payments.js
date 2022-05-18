@@ -29,7 +29,7 @@ const getPayments = async () => {
         userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
         extraEmail: e.extraEmail,
-        extraAddress: e.extraAddress
+        extraAddress: e.extraAddress,
       };
     });
     //console.log("result", result);
@@ -71,7 +71,7 @@ const getPaymentsById = async (id) => {
         userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
         extraEmail: e.extraEmail,
-        extraAddress: e.extraAddress
+        extraAddress: e.extraAddress,
       };
     });
 
@@ -112,7 +112,7 @@ const getPaymentByUserEmail = async (userEmail) => {
         userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
         extraEmail: e.extraEmail,
-        extraAddress: e.extraAddress
+        extraAddress: e.extraAddress,
       };
     });
     return result;
@@ -151,7 +151,7 @@ const getPaymentByUserName = async (userName) => {
         userEmail: e.userEmail,
         products: e.products.map((p) => p.name),
         extraEmail: e.extraEmail,
-        extraAddress: e.extraAddress
+        extraAddress: e.extraAddress,
       };
     });
     return result;
@@ -159,7 +159,7 @@ const getPaymentByUserName = async (userName) => {
     console.log(error);
   }
 };
-const getOrders = async ()=>{
+const getOrders = async () => {
   const all = await getPayments();
   if (all.length !== 0) {
     let array = [];
@@ -185,7 +185,7 @@ const getOrders = async ()=>{
       order.date = arrayRespaldo[0].date;
       order.state = arrayRespaldo[0].state;
       order.payments = [];
-      
+
       for (let x = 0; x < arrayRespaldo.length; x++) {
         let obj = {};
         obj.name = arrayRespaldo[x].name;
@@ -208,11 +208,19 @@ const getOrders = async ()=>{
       array.push(order);
       if (all.length === 0) total--;
     }
-    return array
-}
+    return array;
+  }
+};
+const getOrdersEmail= async(userEmail)=>{
+  const order = await getOrders();
+  const filtro = order.filter((e) => {
+    return e.email === userEmail;
+  });
+return filtro
 }
 module.exports = {
   getOrders,
+  getOrdersEmail,
   getPayments,
   getPaymentsById,
   getPaymentByUserEmail,
