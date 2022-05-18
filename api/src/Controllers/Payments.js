@@ -159,6 +159,7 @@ const getPaymentByUserName = async (userName) => {
     console.log(error);
   }
 };
+
 const getOrders = async () => {
   const all = await getPayments();
   if (all.length !== 0) {
@@ -171,17 +172,14 @@ const getOrders = async () => {
 
       let arrayRespaldo = [];
       for (let i = 0; i < tajada; i++) {
-        arrayRespaldo.push(all.pop());
+        arrayRespaldo.push(all.shift());
         total--;
       }
+      if(!arrayRespaldo[0].name){
+        break
+      }
       order.idTogether = arrayRespaldo[0].idTogether;
-      /* state */
-
-      //console.log(arrayRespaldo)
-
-      // order.totalCarrito = arrayRespaldo.reduce((a, b) => {
-      //   return a + b.total_paid_amount;
-      // }, 0)}
+    
 
       order.totalCarrito = arrayRespaldo[0].total_paid_amount ? arrayRespaldo.reduce((a, b) => {
         return a + b.total_paid_amount;
@@ -192,8 +190,10 @@ const getOrders = async () => {
       order.state = arrayRespaldo[0].state;
       order.payments = [];
 
+
+
       for (let x = 0; x < arrayRespaldo.length; x++) {
-        let obj = {};
+        {let obj = {};
         obj.name = arrayRespaldo[x].name;
         obj.idTogether = arrayRespaldo[x].idTogether;
         obj.id = arrayRespaldo[x].id;
@@ -207,8 +207,9 @@ const getOrders = async () => {
         obj.state = arrayRespaldo[x].state;
         (obj.extraEmail = arrayRespaldo[x].extraEmail),
           (obj.extraAddress = arrayRespaldo[x].extraAddress);
-        //
-        order.payments.push(obj);
+        
+        ////
+        order.payments.push(obj);}
       }
 
       array.push(order);
@@ -217,6 +218,7 @@ const getOrders = async () => {
     return array;
   }
 };
+
 const getOrdersEmail= async(userEmail)=>{
   const order = await getOrders();
   const filtro = order.filter((e) => {
