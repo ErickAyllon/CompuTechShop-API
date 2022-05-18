@@ -166,7 +166,8 @@ const getOrders = async () => {
     let array = [];
     let total = all.length;
 
-    while (total > 0) {
+    while (total > 1) {
+
       let order = {};
       let tajada = Number(all[0].idMatch); //idMatch son la cantidad de pagos q se hicieron desde el mismo carrito
 
@@ -185,12 +186,19 @@ const getOrders = async () => {
         return a + b.total_paid_amount;
       }, 0) : null
 
+      // if(arrayRespaldo[0].total_paid_amount || arrayRespaldo[0].total_paid_amount !== undefined){
+      //   order.totalCarrito = arrayRespaldo.reduce((a, b) => {
+      //     return a + Number(b.total_paid_amount);
+      //   }, 0)
+      // }
+      // else {
+      //   order.totalCarrito = 0
+      // }
+
       order.email = arrayRespaldo[0].userEmail;
       order.date = arrayRespaldo[0].date;
       order.state = arrayRespaldo[0].state;
       order.payments = [];
-
-
 
       for (let x = 0; x < arrayRespaldo.length; x++) {
         {let obj = {};
@@ -208,7 +216,6 @@ const getOrders = async () => {
         (obj.extraEmail = arrayRespaldo[x].extraEmail),
           (obj.extraAddress = arrayRespaldo[x].extraAddress);
         
-        ////
         order.payments.push(obj);}
       }
 
