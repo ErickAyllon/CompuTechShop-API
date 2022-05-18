@@ -26,6 +26,7 @@ const { validatorCategory } = require("../Validators/ValidatorCategory");
 //end validaciones / start payments
 const getPayments = require("./Payments/getPayment");
 const getOrders = require("./Payments/getOrders")
+const getOrderByEmail = require("./Payments/getOrderByEmail")
 const updatePayment = require("./Payments/updatePayment");
 const getAmountPaymentsUserEmail = require("./Payments/getAmountPaymentsUserEmail")
 // end Payments / start carrusel
@@ -63,6 +64,7 @@ router.use("/productCategory", productCategory);
 // end filtros / start Payment
 router.use("/getPayments", getPayments);
 router.use("/getOrders", getOrders)
+router.use("/getOrderByEmail", getOrderByEmail)
 router.use("/updatePayment", updatePayment);
 router.use("/getPaymentAcount", getAmountPaymentsUserEmail)
 // end Payments / start carrusel
