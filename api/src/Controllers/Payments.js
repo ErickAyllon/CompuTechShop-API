@@ -166,8 +166,8 @@ const getOrders = async () => {
     let array = [];
     let total = all.length;
 
-    while (total > 1) {
-
+    while (total > 0) {
+      if(all.length === 0) break
       let order = {};
       let tajada = Number(all[0].idMatch); //idMatch son la cantidad de pagos q se hicieron desde el mismo carrito
 
