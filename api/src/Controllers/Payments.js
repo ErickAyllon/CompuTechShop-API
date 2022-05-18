@@ -192,10 +192,13 @@ const getOrders = async ()=>{
         obj.idTogether = arrayRespaldo[x].idTogether;
         obj.id = arrayRespaldo[x].id;
         obj.price = arrayRespaldo[x].price;
+        obj.date = arrayRespaldo[x].date;
         obj.quantity = arrayRespaldo[x].quantity;
         obj.total_paid_amount = arrayRespaldo[x].total_paid_amount;
         obj.status = arrayRespaldo[x].status;
+        obj.userEmail = arrayRespaldo[x].userEmail;
         obj.status_detail = arrayRespaldo[x].status_detail;
+        obj.state = arrayRespaldo[x].state;
         (obj.extraEmail = arrayRespaldo[x].extraEmail),
           (obj.extraAddress = arrayRespaldo[x].extraAddress);
         //
