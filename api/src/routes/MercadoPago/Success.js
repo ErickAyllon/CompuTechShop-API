@@ -2,14 +2,29 @@ const router = require("express").Router();
 const { Product, Payment, User } = require("../../db");
 const { transporter } = require("../../Mails/index");
 const axios = require("axios");
-
+const { getPayments } = require("../../Controllers/Payments");
 require("dotenv").config();
-
-let idTogether = 0;
 
 router.get("/", async (req, res) => {
   try {
-    const { id, successEmail } = req.query;
+    const payments = await getPayments()
+    let num ;
+    if(payments.length > 0){payments.sort((a,b) =>{
+      if (a.idTogether < b.idTogether) {
+        return 1;
+    }
+    if (a.idTogether > b.idTogether) {
+        return -1;
+    }
+    return 0;
+    })
+    num = payments[0].idTogether;
+  }
+
+    
+    let idTogether = num ? num + 1 : 1 ;
+
+    const { id, successEmail, extraEmail, extraAddress } = req.query;
     const infoApi = await axios.get(
       "https://api.mercadopago.com/v1/payments/" + id,
       {
@@ -18,7 +33,7 @@ router.get("/", async (req, res) => {
         },
       }
     );
-  
+
     const infoTotal = {
       items: infoApi.data.additional_info.items.map((item) => {
         return {
@@ -36,7 +51,7 @@ router.get("/", async (req, res) => {
     if (infoTotal) {
       /* const productos = [] */
       let user;
-      let email;
+      let email = []
       let id;
       for (let i = 0; i < infoTotal.items.length; i++) {
         let actualDate = new Intl.DateTimeFormat("es-ES", {
@@ -58,8 +73,10 @@ router.get("/", async (req, res) => {
           status_detail: infoTotal.status_detail,
           state: "In process",
           userEmail: successEmail ? successEmail : "CORREO@HARDCODEADO.com",
+          extraEmail: extraEmail ? extraEmail : null,
+          extraAddress: extraAddress ? extraAddress : null,
         };
-        
+
         const cambioCantidad = await Product.findOne({
           where: {
             name: aux.name,
@@ -79,20 +96,24 @@ router.get("/", async (req, res) => {
             where: { name: aux.name },
           }
         );
-        email = aux.userEmail
-        id = aux.idTogether
-      
+        email.push(aux.userEmail);
+        aux.extraEmail ? email.push(aux.extraEmail) : null
+        id = aux.idTogether;
       }
       idTogether = idTogether + 1;
-      // console.log('email', email)
+      email = [...new Set (email)]
+      //console.log('email', email)
       user = await User.findOne({
         where: { email: email },
       });
       //console.log('user', user)
-
-      await transporter.sendMail({
+      
+      res.send({ msg: "Pagos subidos a la base de datos" });
+      
+      email.map(el => {
+        transporter.sendMail({
         from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
-        to: user.dataValues.email, // list of receivers
+        to: el, // list of receivers
         subject: "Thanks for your order!", // Subject line
         html: `<h4>Hi ${user.dataValues.given_name}!</h4>
         <p>Thank you for buying in CompuTechShop! We hope everything went well. Your order number: #${id} will be shipped to your profile's address in the next 2-5 working days. 
@@ -103,9 +124,23 @@ router.get("/", async (req, res) => {
         CompuTechShop Team.
         <p/>`, // html body
       });
-
+      })
+      // await transporter.sendMail({
+      //   from: '"CompuTech Shop" <computechshopok@gmail.com>', // sender address
+      //   to: user.dataValues.email, // list of receivers
+      //   subject: "Thanks for your order!", // Subject line
+      //   html: `<h4>Hi ${user.dataValues.given_name}!</h4>
+      //   <p>Thank you for buying in CompuTechShop! We hope everything went well. Your order number: #${id} will be shipped to your profile's address in the next 2-5 working days. 
+      //   If you need to change your address please go to your profile, click on “edit user” button, write the new address and click on the “update user” button.
+      //   </br>
+      //   </br>
+      //   Sending you the best!</br>
+      //   CompuTechShop Team.
+      //   <p/>`, // html body
+      // });
+      
       /* await newPayment.addProduct(productos); */
-      res.send({ msg: "Pagos subidos a la base de datos" });
+      
     }
   } catch (error) {
     console.log("ERROR EN SUCCESS", error);
