@@ -177,9 +177,15 @@ const getOrders = async () => {
       order.idTogether = arrayRespaldo[0].idTogether;
       /* state */
 
-      order.totalCarrito = arrayRespaldo.reduce((a, b) => {
+      //console.log(arrayRespaldo)
+
+      // order.totalCarrito = arrayRespaldo.reduce((a, b) => {
+      //   return a + b.total_paid_amount;
+      // }, 0)}
+
+      order.totalCarrito = arrayRespaldo[0].total_paid_amount ? arrayRespaldo.reduce((a, b) => {
         return a + b.total_paid_amount;
-      }, 0);
+      }, 0) : null
 
       order.email = arrayRespaldo[0].userEmail;
       order.date = arrayRespaldo[0].date;
