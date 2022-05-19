@@ -842,7 +842,7 @@ const jsonProducts = [
     "image": "https://http2.mlstatic.com/D_NQ_NP_931260-MLA49377202694_032022-V.webp",
     "price": "34999",
     "quantity": "10",
-    "brand": "Kelix",
+    "brand": "Intel",
     "description": "Características del Producto: Modelo KL3350 Pantalla LCD 14 pulgadas Resolución FULL HD 1920 x 1080 pixeles Microprocesador Intel Apollo Lake Modelo N3350 1.1 - 2.4 GHz Memoria RAM 4GB DDR4 Almacenaje64 GB EMMC Cámara 2 Megapixeles Parlantes Sonido Estereo Salida de VideoMini HDMI Batería5000 mAh Cargador220 Volts Sistema Operativo Windows: Microsoft Windows 10 Home ESPAÑOL",
     "calification": "0",
     "categories": ["Laptops"]
@@ -909,8 +909,8 @@ const jsonProducts = [
     "image": "https://http2.mlstatic.com/D_NQ_NP_918568-MLA32146214305_092019-V.webp",
     "price": "3000",
     "quantity": "1",
-    "brand": "Yindiao",
-    "description": "Yindiao diseña productos y experiencias que ocupan un lugar cotidiano en la vida de las personas, poniendo foco en la innovación y la calidad.Su objetivo es crear momentos verdaderamente únicos y significativos para sus usuarios.Los mouses Logitech se adaptan a la forma de tu mano para proporcionarte horas de comodidad.Sin necesidad de mover el brazo para deslizar el cursor, tu mano se fatigará menos.Son ideales para cualquier espacio de trabajo y quienes tienen la mesa llena de diversos objetos.Adaptado a tus movimientos.Su diseño eficaz hace de este mouse un elemento cómodo, con una gran experiencia de uso para aquellas personas que buscan seguridad en cada click.La funcionalidad al alcance de tu manEl sistema de detección de movimiento óptico te permitirá mover el cursor de una manera más precisa y sensible que en los sistemas tradicionales",
+    "brand": "Logitech",
+    "description": "Logitech diseña productos y experiencias que ocupan un lugar cotidiano en la vida de las personas, poniendo foco en la innovación y la calidad.Su objetivo es crear momentos verdaderamente únicos y significativos para sus usuarios.Los mouses Logitech se adaptan a la forma de tu mano para proporcionarte horas de comodidad.Sin necesidad de mover el brazo para deslizar el cursor, tu mano se fatigará menos.Son ideales para cualquier espacio de trabajo y quienes tienen la mesa llena de diversos objetos.Adaptado a tus movimientos.Su diseño eficaz hace de este mouse un elemento cómodo, con una gran experiencia de uso para aquellas personas que buscan seguridad en cada click.La funcionalidad al alcance de tu manEl sistema de detección de movimiento óptico te permitirá mover el cursor de una manera más precisa y sensible que en los sistemas tradicionales",
     "calification": "0",
     "categories": ["Mouses"]
   },
@@ -930,7 +930,7 @@ const jsonProducts = [
     "image": "https://http2.mlstatic.com/D_NQ_NP_2X_737543-MLA47215972219_082021-F.webp",
     "price": "4570",
     "quantity": "1",
-    "brand": "Asus",
+    "brand": "Razer",
     "description": "Desde 2005 Razer es la marca líder de estilo de vida para jugadores. Ha diseñado y construido el ecosistema de hardware, software y servicios más grande del mundo. La ubicación de cada botón y curva de los mouses Razer se crearon para adaptarse perfectamente a tu mano. Gracias a estos dispositivos, conseguirás una experiencia de juego cómoda y placentera. Adaptado a tus movimientos. El mouse de juego te ofrecerá la posibilidad de marcar la diferencia y sacar ventajas en tus partidas. Su conectividad y sensor suave ayudará a que te desplaces rápido por la pantalla. La funcionalidad al alcance de tu mano. El sistema de detección de movimiento óptico te permitirá mover el cursor de una manera más precisa y sensible que en los sistemas tradicionales.",
     "calification": "0",
     "categories": ["Mouses"]
@@ -941,7 +941,7 @@ const jsonProducts = [
     "image": "https://http2.mlstatic.com/D_NQ_NP_638392-MLA32146296591_092019-O.webp",
     "price": "5000",
     "quantity": "1",
-    "brand": "Asus",
+    "brand": "Dell",
     "description": "Para trabajar desde casa con la computadora o aprovechar los momentos de ocio, necesitás comodidad y facilidad de movimiento. Con tu Dell WM126 encontrá eso que buscás en un solo aparato con la mejor tecnología. Adaptado a tus movimientos. Su diseño eficaz hace de este mouse un elemento cómodo, con una gran experiencia de uso para aquellas personas que buscan seguridad en cada click. La funcionalidad al alcance de tu mano. El sistema de detección de movimiento óptico te permitirá mover el cursor de una manera más precisa y sensible que en los sistemas tradicionales.",
     "calification": "0",
     "categories": ["Mouses"]
@@ -952,7 +952,7 @@ const jsonProducts = [
     "image": "https://http2.mlstatic.com/D_NQ_NP_2X_771923-MLA46995117572_082021-F.webp",
     "price": "9000",
     "quantity": "1",
-    "brand": "Asus",
+    "brand": "Logitech",
     "description": "Logitech G305 K/DA LIGHTSPEED Ratón inalámbrico para Gaming. Juega a tope, el ratón para gaming G305 K/DA está diseñado con el arte oficial del universo alternativo de League of Legends K/DA para una experiencia de juego completa y envolvente. La marca de accesorios inalámbricos para gaming más vendida del mundo. Basado en datos de ventas agregados independientes de teclados, ratones y auriculares para PC gaming inalámbricos en unidades en: US, CA, CN, JP, KR, TW, TH, IN, DE, FR, RU, UK, SE, TR.",
     "calification": "0",
     "categories": ["Mouses"]
