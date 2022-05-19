@@ -44,7 +44,7 @@ const jsonProducts = [
     "image": "https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_30014_Monitor_Gamer_ASUS_ROG_SWIFT_24__PG259QNR_360Hz_1Ms_G-Sync_c37ea8f1-grn.jpg",
     "price": "180000",
     "quantity": "5",
-    "brand": "UltraWide",
+    "brand": "Asus",
     "description": "El panel curvo de 27 pulgadas WQHD (2560x1440p) 1800R con un tiempo de respuesta de 1 ms y frecuencia de actualización overclockeada de hasta 165Hz adopta los estándares y el diseño de ROG",
     "calification": "0",
     "categories": ["Monitors"]
