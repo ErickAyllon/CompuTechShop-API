@@ -84,7 +84,7 @@ const jsonProducts = [
     "image": "https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_31458_Mouse_HP_HyperX_Pulsefire_Haste_Black-Red_1f5d0e1d-grn.jpg",
     "price": "8000",
     "quantity": "6",
-    "brand": "Asus",
+    "brand": "HyperX",
     "description": "Para trabajar desde casa con la computadora o aprovechar los momentos de ocio, necesitás comodidad y facilidad de movimiento. Con tu HyperX Pulsefire Haste encontrá eso que buscás en un solo aparato con la mejor tecnología.",
     "calification": "0",
     "categories": ["Mouses"]
