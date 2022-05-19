@@ -5,7 +5,7 @@ const jsonProducts = [
     "price": "18500",
     "quantity": "4",
     "brand": "Asus",
-    "description": "1er teclado",
+    "description": "Disfrutá de tus partidas en otro nivel con Redragon, marca reconocida que se especializa en brindar la mejor experiencia de juego al público gamer desde hace más de 20 años. Sus teclados se adaptan a todo tipo de jugadores y esto los convierten en un fiel reflejo de la alta gama y calidad que la compañía ofrece.",
     "calification": "0",
     "categories": ["Keyboards"]
   },
@@ -15,7 +15,7 @@ const jsonProducts = [
     "price": "9960",
     "quantity": "1",
     "brand": "Hp",
-    "description": "2do teclado",
+    "description": "Este teclado HyperX de alto rendimiento permite que puedas disfrutar de horas ilimitadas de juegos. Está diseñado especialmente para que puedas expresar tanto tus habilidades como tu estilo. Podrás mejorar tu experiencia de gaming, ya seas un aficionado o todo un experto y hacer que tus jugadas alcancen otro nivel.",
     "calification": "0",
     "categories": ["Keyboards"]
   },
@@ -25,7 +25,7 @@ const jsonProducts = [
     "price": "9900",
     "quantity": "10",
     "brand": "Hp",
-    "description": "3er teclado",
+    "description": "Este teclado HyperX de alto rendimiento permite que puedas disfrutar de horas ilimitadas de juegos. Está diseñado especialmente para que puedas expresar tanto tus habilidades como tu estilo. Podrás mejorar tu experiencia de gaming, ya seas un aficionado o todo un experto y hacer que tus jugadas alcancen otro nivel.",
     "calification": "0",
     "categories": ["Keyboards"]
   },
@@ -35,7 +35,7 @@ const jsonProducts = [
     "price": "13000",
     "quantity": "22",
     "brand": "Glorious",
-    "description": "4to teclado",
+    "description": "Presentamos la nueva edición GMMK White Ice. Dale a tu estación de batalla una actualización impecable con esta impresionante nueva combinación de colores. Con un cuerpo plateado mate, todas las teclas blancas de inyección de doble disparo.",
     "calification": "0",
     "categories": ["Keyboards"]
   },
@@ -45,7 +45,7 @@ const jsonProducts = [
     "price": "180000",
     "quantity": "5",
     "brand": "UltraWide",
-    "description": "1er monitor",
+    "description": "El panel curvo de 27 pulgadas WQHD (2560x1440p) 1800R con un tiempo de respuesta de 1 ms y frecuencia de actualización overclockeada de hasta 165Hz adopta los estándares y el diseño de ROG",
     "calification": "0",
     "categories": ["Monitors"]
   },
@@ -55,7 +55,7 @@ const jsonProducts = [
     "price": "172000",
     "quantity": "1",
     "brand": "Asus",
-    "description": "2do monitor",
+    "description": "LG busca entender a los usuarios para ofrecerles óptimas soluciones y nuevas experiencias a través de la evolución tecnológica. Disfrutá de la perfecta combinación de diseño, calidad y rendimiento que la empresa te ofrece en este monitor.",
     "calification": "0",
     "categories": ["Monitors"]
   },
@@ -65,7 +65,7 @@ const jsonProducts = [
     "price": "130000",
     "quantity": "22",
     "brand": "Viewsonic",
-    "description": "3er monitor",
+    "description": "Disfrutá de todas las cualidades que el monitor ViewSonic XG3220 tiene para ofrecerte. Percibí las imágenes de una manera completamente diferente y complementá cualquier espacio ya sea en tu casa u oficina.",
     "calification": "0",
     "categories": ["Monitors"]
   },
@@ -75,7 +75,7 @@ const jsonProducts = [
     "price": "141000",
     "quantity": "6",
     "brand": "Lg",
-    "description": "4to monitor",
+    "description": "LG busca entender a los usuarios para ofrecerles óptimas soluciones y nuevas experiencias a través de la evolución tecnológica. Disfrutá de la perfecta combinación de diseño, calidad y rendimiento que la empresa te ofrece en este monitor.",
     "calification": "0",
     "categories": ["Monitors"]
   },
@@ -85,7 +85,7 @@ const jsonProducts = [
     "price": "8000",
     "quantity": "6",
     "brand": "Asus",
-    "description": "1er mouse",
+    "description": "Para trabajar desde casa con la computadora o aprovechar los momentos de ocio, necesitás comodidad y facilidad de movimiento. Con tu HyperX Pulsefire Haste encontrá eso que buscás en un solo aparato con la mejor tecnología.",
     "calification": "0",
     "categories": ["Mouses"]
   },
@@ -95,7 +95,7 @@ const jsonProducts = [
     "price": "1990",
     "quantity": "1",
     "brand": "Redragon",
-    "description": "2do mouse",
+    "description": "Mouse Gamer Redragon Griffin Blanco - M607W Líneas sutiles, curvas de luz, suavidad. La estética y la ergonomía confluyen en el Griffin tan armónicamente que la sensibilidad se deleita.",
     "calification": "0",
     "categories": ["Mouses"]
   },
@@ -105,7 +105,7 @@ const jsonProducts = [
     "price": "6010",
     "quantity": "4",
     "brand": "Msi",
-    "description": "3er mouse",
+    "description": "Ultraliviano con 65g Estructura diseñada minuciosamente para que sea lo más liviano posible Agarre seguro con el diseño antideslizante con patrón de diamante Interruptores OMRON para 60 millones de clics 400 IPS y hasta 16000 DPI con tasa de sondeo A 1ms Cable MSI FriXionFree que minimiza la fricción contra el escritor",
     "calification": "0",
     "categories": ["Mouses"]
   },
@@ -115,7 +115,7 @@ const jsonProducts = [
     "price": "18420",
     "quantity": "6",
     "brand": "Asus",
-    "description": "4to mouse",
+    "description": "Mouse óptico para juegos que cuenta con cubiertas intercambiables que permiten cuatro estilos ergonómicos diferentes e iluminación Aura RGB con soporte Aura Sync",
     "calification": "0",
     "categories": ["Mouses"]
   },
