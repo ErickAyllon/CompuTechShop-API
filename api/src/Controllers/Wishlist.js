@@ -30,7 +30,7 @@ const wishlistByUserId = async (userId) => {
     },
     include: {
       model: Product,
-      attributes: ["name", "image", "price", "brand", "calification"]
+      attributes: ["id", "name", "image", "price", "brand", "calification"]
     }
   })
   const result = await userDB.map(el => {
@@ -38,6 +38,7 @@ const wishlistByUserId = async (userId) => {
     return {
       id: el.id,
       user: el.userId,
+      productId: el.products.map(p => p.dataValues.id),
       product: el.products.map(p => p.dataValues.name),
       image: el.products.map(p => p.dataValues.image),
       price: el.products.map(p => p.dataValues.price),
