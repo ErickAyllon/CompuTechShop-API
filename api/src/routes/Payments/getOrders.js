@@ -4,6 +4,7 @@ const { getOrders,getOrdersEmail } = require("../../Controllers/Payments");
 
 router.get('/', async (req,res) => {
   const {userEmail} = req.query
+  console.log("HOLAAAAAAAAAAAAAAAAAAAAAAA");
 	try {
     if(userEmail){
       const order = await getOrdersEmail(userEmail)
